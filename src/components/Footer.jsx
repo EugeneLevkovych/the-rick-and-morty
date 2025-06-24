@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <div className="border-t-0 shadow-md">
-      <div className="container cont-p-m">
-        <p>Make with ❤️ for the MobProgramming team</p>
+    <div className="border-0 shadow-top">
+      <div className="container py-5 cont-p-m">
+        <p className="text-center">Make with ❤️ for the MobProgramming team</p>
       </div>
     </div>
   );

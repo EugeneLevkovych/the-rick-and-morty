@@ -18,3 +18,18 @@ body {
     padding-right: 20px;
   }
 }
+
+@utility inp-border {
+  padding: 16px;
+  width: 240px;
+  height: 56px;
+  border: 1px, solid;
+  border-radius: 8px;
+  border-color: var(--color-gray1);
+}
+
+@theme {
+  --shadow-top:
+    0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+  --color-gray1: #00000080;
+}
