@@ -1,1 +1,20 @@
 @import 'tailwindcss';
+
+body {
+  background-color: #708a58;
+}
+
+@utility cont-p-m {
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 16px;
+    padding-right: 15px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
