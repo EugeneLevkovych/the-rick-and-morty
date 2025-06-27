@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import logoBig from '../assets/images/logo-big.png';
 import CharacterCard from '../components/CharacterCard';
+import LoadMoreBtn from '../components/LoadMoreBtn';
 
 export default function Characters() {
   const [query, setQuery] = useState(null);
@@ -49,7 +50,7 @@ export default function Characters() {
           <option value="unknown">unknown</option>
         </select>
       </div>
-      <ul className="flex flex-wrap justify-center gap-5 rounded-sm">
+      <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {cartoonData &&
           cartoonData.results.map(item => (
             <CharacterCard
@@ -60,6 +61,7 @@ export default function Characters() {
             />
           ))}
       </ul>
+      <LoadMoreBtn />
     </div>
   );
 }
