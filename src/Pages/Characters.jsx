@@ -82,7 +82,7 @@ export default function Characters() {
           value={status}
           name="Status"
         >
-          {GENDER.map(i => (
+          {STATUS.map(i => (
             <option key={i} value={i}>
               {i}
             </option>
