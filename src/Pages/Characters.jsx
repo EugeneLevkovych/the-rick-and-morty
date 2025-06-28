@@ -41,15 +41,15 @@ export default function Characters() {
   }
 
   return (
-    <div className="container pt-6.5 pb-11 cont-p-m">
-      <img className="mx-auto mb-4" src={logoBig} alt="Rick & Morty" />
-      <div className="relative flex gap-5 mb-12">
+    <div className="container pt-8 md:pt-6.5 pb-4 md:pb-11 cont-p-m">
+      <img className="mx-auto mb-8 md:mb-4" src={logoBig} alt="Rick & Morty" />
+      <div className="relative flex gap-5 mb-4 md:mb-12">
         <svg className="size-6 absolute top-4 left-4 fill-gray1">
           <use href="/sprite.svg#icon-leading"></use>
         </svg>
         <input
           value={search}
-          className="inp-border pl-12"
+          className="w-full md:max-w-60 border rounded-lg border-gray1 py-4 pl-12"
           type="text"
           placeholder="Filter by name..."
           onChange={e => setSearch(e.target.value)}
@@ -88,6 +88,12 @@ export default function Characters() {
             </option>
           ))}
         </Select>
+      </div>
+      <div className="relative md:hidden items-center bg-blue2 shadow-adv-filters-btn rounded-lg p-4 mb-12">
+        <svg className="absolute top-4 left-6 size-5 fill-gray4">
+          <use href="./sprite.svg#icon-burger2"></use>
+        </svg>
+        <p className="text-center text-blue1">Advanced Filters</p>
       </div>
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {cartoonData &&
