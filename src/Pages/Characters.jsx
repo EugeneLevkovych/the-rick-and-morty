@@ -22,7 +22,6 @@ export default function Characters() {
         `${API_URL}/character/?page=${pageNumber}&name=${search}&species=${species}&gender=${gender}&status=${status}`
       );
       const data = await res.json();
-      // console.log(data);
       setCartoonData(data);
     }
     getData();

@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Characters from './Pages/Characters';
 import Episodes from './Pages/Episodes';
 import Locations from './Pages/Locations';
+import CharacterDetails from './Pages/CharacterDetails';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
       { index: true, element: <Characters /> },
       { path: 'locations', element: <Locations /> },
       { path: 'episodes', element: <Episodes /> },
+      { path: 'character-details', element: <CharacterDetails /> },
     ],
   },
 ]);
