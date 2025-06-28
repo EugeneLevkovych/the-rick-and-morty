@@ -3,6 +3,8 @@ import { useState } from 'react';
 import logoBig from '../assets/images/logo-big.png';
 import CharacterCard from '../components/CharacterCard';
 import LoadMoreBtn from '../components/LoadMoreBtn';
+import { SPECIES, GENDER, STATUS } from '../data/filtersData';
+import Select from '../components/Select';
 
 const API_URL = 'https://rickandmortyapi.com/api';
 
@@ -52,41 +54,28 @@ export default function Characters() {
           placeholder="Filter by name..."
           onChange={e => setSearch(e.target.value)}
         />
-        <select
-          value={species}
-          className="inp-border"
-          name="species"
-          id="species"
-          onChange={e => setSpecies(e.target.value)}
-        >
-          <option value="human">Human</option>
-          <option value="animal">Animal</option>
-          <option value="robot">Robot</option>
-          <option value="alien">Alien</option>
-        </select>
-        <select
-          value={gender}
-          className="inp-border"
-          name="gender"
-          id="gender"
-          onChange={e => setGender(e.target.value)}
-        >
-          <option value="female">female</option>
-          <option value="male">male</option>
-          <option value="genderless">genderless</option>
-          <option value="unknown">unknown</option>
-        </select>
-        <select
-          value={status}
-          className="inp-border"
-          name="status"
-          id="status"
-          onChange={e => setStatus(e.target.value)}
-        >
-          <option value="alive">alive</option>
-          <option value="dead">dead</option>
-          <option value="unknown">unknown</option>
-        </select>
+        <Select onChange={e => setSpecies(e.target.value)} value={species}>
+          {SPECIES.map(i => (
+            <option key={i} value={i}>
+              {i}
+            </option>
+          ))}
+        </Select>
+        <Select onChange={e => setGender(e.target.value)} value={gender}>
+          {GENDER.map(i => (
+            <option key={i} value={i}>
+              {i}
+            </option>
+          ))}
+        </Select>
+
+        <Select onChange={e => setStatus(e.target.value)} value={status}>
+          {GENDER.map(i => (
+            <option key={i} value={i}>
+              {i}
+            </option>
+          ))}
+        </Select>
       </div>
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {cartoonData &&
