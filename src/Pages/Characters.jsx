@@ -53,23 +53,35 @@ export default function Characters() {
           type="text"
           placeholder="Filter by name..."
           onChange={e => setSearch(e.target.value)}
+          name="search"
         />
-        <Select onChange={e => setSpecies(e.target.value)} value={species}>
+        <Select
+          onChange={e => setSpecies(e.target.value)}
+          value={species}
+          name="Species"
+        >
           {SPECIES.map(i => (
             <option key={i} value={i}>
               {i}
             </option>
           ))}
         </Select>
-        <Select onChange={e => setGender(e.target.value)} value={gender}>
+        <Select
+          onChange={e => setGender(e.target.value)}
+          value={gender}
+          name="Gender"
+        >
           {GENDER.map(i => (
             <option key={i} value={i}>
               {i}
             </option>
           ))}
         </Select>
-
-        <Select onChange={e => setStatus(e.target.value)} value={status}>
+        <Select
+          onChange={e => setStatus(e.target.value)}
+          value={status}
+          name="Status"
+        >
           {GENDER.map(i => (
             <option key={i} value={i}>
               {i}
