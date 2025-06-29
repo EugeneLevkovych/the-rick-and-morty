@@ -44,9 +44,12 @@ export default function CharacterDetails() {
   return (
     <div className="container pt-6 pb-20.5 md:pt-10.5 md:pb-9 cont-p-m">
       <NavLink to={'/'}>
-        <p className="font-bold text-lg text-black uppercase cursor-pointer mb-4">
-          &larr; Go back
-        </p>
+        <div className="flex items-center gap-2 font-bold text-lg text-black uppercase cursor-pointer mb-4">
+          <svg className="size-6">
+            <use href="./sprite.svg#icon-arrow-back"></use>
+          </svg>
+          <p>Go back</p>
+        </div>
       </NavLink>
       <img
         className="size-37 border-0 rounded-full mx-auto md:-mt-18 mb-4"
@@ -55,8 +58,8 @@ export default function CharacterDetails() {
       <p className="text-[2rem] text-center text-gray7 pb-4">
         {character.name}
       </p>
-      <div className="flex flex-col gap-13">
-        <div>
+      <div className="flex flex-col md:flex-row gap-13 md:gap-5">
+        <div className="max-w-103 w-full">
           <p className="font-medium text-xl leading-tight tracking-[.01em] text-gray5 mb-4">
             Informations
           </p>
@@ -66,8 +69,12 @@ export default function CharacterDetails() {
                 key={label}
                 className="w-full border-b border-gray6 pt-2 pb-3 px-4"
               >
-                <p className="text-gray-500 font-semibold">{label}:</p>
-                <p>{value}</p>
+                <p className="font-bold tracking-[0.01em] text-gray7">
+                  {label}:
+                </p>
+                <p className="text-sm leading-[1.42] tracking-[.02em] text-gray8">
+                  {value}
+                </p>
               </li>
             ))}
           </ul>
