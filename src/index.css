@@ -30,6 +30,7 @@ body {
     0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-adv-filters-btn:
     0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  --shadow-mob-menu: 2px 0 8px 2px rgba(0, 0, 0, 0.1);
 
   --color-gray1: #00000080;
   --color-gray2: #000000dd;
@@ -40,6 +41,7 @@ body {
   --color-gray7: #081f32;
   --color-gray8: #6e798c;
   --color-gray9: #f2f2f7;
+  --color-gray10: #0000008a;
 
   --color-blue1: #2196f3;
   --color-blue2: #e3f2fd;

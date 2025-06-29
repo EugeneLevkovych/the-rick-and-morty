@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router';
 import logoBlack from '../assets/images/logo-black.png';
 
-export default function Header() {
+export default function Header({ onToggleMenu }) {
   return (
     <div className="border-b-0 shadow-md py-[6px]">
       <div className="container flex justify-between items-center cont-p-m">
@@ -11,7 +11,7 @@ export default function Header() {
           <NavLink to={'locations'}>Locations</NavLink>
           <NavLink to={'episodes'}>Episodes</NavLink>
         </div>
-        <svg className="md:hidden size-6 fill-gray4">
+        <svg onClick={onToggleMenu} className="md:hidden size-6 fill-gray4">
           <use href="./sprite.svg#icon-burger1"></use>
         </svg>
       </div>
