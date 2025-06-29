@@ -52,7 +52,7 @@ export default function CharacterDetails() {
         </div>
       </NavLink>
       <img
-        className="size-37 border-0 rounded-full mx-auto md:-mt-18 mb-4"
+        className="size-37 md:size-75 border-5 border-gray9 rounded-full mx-auto md:-mt-18 mb-4"
         src={character.image}
       />
       <p className="text-[2rem] text-center text-gray7 pb-4">
@@ -92,9 +92,15 @@ export default function CharacterDetails() {
                   key={episode.id}
                   className="relative w-full border-b border-gray6 pt-[10px] pb-4 px-4"
                 >
-                  <p className="font-medium">{episode.name}</p>
-                  <p className="text-sm text-gray-600">{episode.episode}</p>
-                  <p>{episode.air_date}</p>
+                  <p className="font-bold tracking-[0.01em] text-gray7">
+                    {episode.name}
+                  </p>
+                  <p className="text-sm leading-[1.42] tracking-[.02em] text-gray8">
+                    {episode.episode}
+                  </p>
+                  <p className="font-medium text-[10px] leading-[1.6] tracking-[.15em] uppercase text-gray5">
+                    {episode.air_date}
+                  </p>
                   <svg className="absolute size-4 top-9.5 right-9.5 fill-gray5">
                     <use href="./sprite.svg#icon-arrow1"></use>
                   </svg>
