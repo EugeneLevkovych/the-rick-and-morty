@@ -42,10 +42,16 @@ export default function CharacterDetails() {
   }, [character]);
 
   return (
-    <div className="container cont-p-m">
+    <div className="container pt-6 pb-20.5 md:pt-10.5 md:pb-9 cont-p-m">
       <NavLink to={'/'}>
-        <p className="uppercase cursor-pointer">&larr; Go back</p>
+        <p className="font-bold text-lg text-black uppercase cursor-pointer mb-4">
+          &larr; Go back
+        </p>
       </NavLink>
+      <img
+        className="size-37 border-0 rounded-full mx-auto md:-mt-18 mb-4"
+        src={character.image}
+      />
       <p className="text-[2rem] text-center text-gray7 pb-4">
         {character.name}
       </p>
