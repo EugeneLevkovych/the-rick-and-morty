@@ -101,7 +101,8 @@ export default function Characters() {
               key={item.id}
               src={item.image}
               name={item.name}
-              speacies={item.species}
+              species={item.species}
+              character={item}
             />
           ))}
       </ul>

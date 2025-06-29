@@ -35,6 +35,10 @@ body {
   --color-gray2: #000000dd;
   --color-gray3: #00000099;
   --color-gray4: #00000089;
+  --color-gray5: #8e8e93;
+  --color-gray6: rgba(33, 33, 33, 0.08);
+  --color-gray7: #081f32;
+
   --color-blue1: #2196f3;
   --color-blue2: #e3f2fd;
 }
