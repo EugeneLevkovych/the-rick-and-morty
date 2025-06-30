@@ -15,19 +15,16 @@ export default function CharacterDetails() {
       try {
         setLoadingEpisodes(true);
 
-        // Отримуємо ID епізодів з URL
         const episodeIds = character.episode.map(url => {
           const parts = url.split('/');
           return parts[parts.length - 1];
         });
 
-        // Робимо запит для всіх епізодів одразу
         const response = await fetch(
           `https://rickandmortyapi.com/api/episode/${episodeIds.join(',')}`
         );
         const data = await response.json();
 
-        // Якщо один епізод, API повертає об'єкт, якщо кілька - масив
         const episodesData = Array.isArray(data) ? data : [data];
         setEpisodes(episodesData);
       } catch (error) {
