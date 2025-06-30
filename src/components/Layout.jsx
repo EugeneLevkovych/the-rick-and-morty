@@ -3,9 +3,11 @@ import Header from './Header';
 import Footer from './Footer';
 import MobileMenu from './MobileMenu';
 import { useState } from 'react';
+import FiltersOverlay from './FiltersOverlay';
 
 export default function Layout() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(open => !open);
@@ -15,9 +17,17 @@ export default function Layout() {
       {isOpen && <MobileMenu onToggleMenu={toggleMenu} />}
       <Header onToggleMenu={toggleMenu} />
       <main>
-        <Outlet />
+        <Outlet
+          context={{ onClickAdvancedBtn: () => setIsOverlayOpen(true) }}
+        />
       </main>
       <Footer />
+      {isOverlayOpen && (
+        <FiltersOverlay
+          isOpen={isOverlayOpen}
+          onClickClose={() => setIsOverlayOpen(false)}
+        />
+      )}
     </div>
   );
 }

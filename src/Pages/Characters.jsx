@@ -5,6 +5,7 @@ import CharacterCard from '../components/CharacterCard';
 import LoadMoreBtn from '../components/LoadMoreBtn';
 import { SPECIES, GENDER, STATUS } from '../data/filtersData';
 import Select from '../components/Select';
+import { useOutletContext } from 'react-router';
 
 const API_URL = 'https://rickandmortyapi.com/api';
 
@@ -15,6 +16,7 @@ export default function Characters() {
   const [gender, setGender] = useState('');
   const [status, setStatus] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
+  const { onClickAdvancedBtn } = useOutletContext();
 
   useEffect(() => {
     async function getData() {
@@ -89,7 +91,10 @@ export default function Characters() {
         </Select>
       </div>
       <div className="relative md:hidden items-center bg-blue2 shadow-adv-filters-btn rounded-lg p-4 mb-12">
-        <svg className="absolute top-4 left-6 size-5 fill-gray4">
+        <svg
+          onClick={onClickAdvancedBtn}
+          className="absolute top-4 left-6 size-5 fill-gray4"
+        >
           <use href="./sprite.svg#icon-burger2"></use>
         </svg>
         <p className="text-center text-blue1">Advanced Filters</p>
