@@ -61,7 +61,7 @@ export default function Characters() {
         </svg>
         <input
           value={search}
-          className="w-full md:w-60 xl:w-80 border rounded-lg border-gray1 py-3 pl-12"
+          className="w-full md:w-60 xl:w-73 border rounded-lg border-gray1 py-3 pl-12"
           type="text"
           placeholder="Filter by name..."
           onChange={e => setSearch(e.target.value)}
@@ -71,7 +71,7 @@ export default function Characters() {
           onChange={e => setSpecies(e.target.value)}
           value={species}
           name="Species"
-          className="hidden md:block w-60 xl:w-80"
+          className="hidden md:block w-60 xl:w-73"
         >
           {SPECIES.map(i => (
             <option key={i} value={i}>
@@ -83,7 +83,7 @@ export default function Characters() {
           onChange={e => setGender(e.target.value)}
           value={gender}
           name="Gender"
-          className="hidden md:block w-60 xl:w-80"
+          className="hidden md:block w-60 xl:w-73"
         >
           {GENDER.map(i => (
             <option key={i} value={i}>
@@ -95,7 +95,7 @@ export default function Characters() {
           onChange={e => setStatus(e.target.value)}
           value={status}
           name="Status"
-          className="hidden md:block w-60 xl:w-80"
+          className="hidden md:block w-60 xl:w-73"
         >
           {STATUS.map(i => (
             <option key={i} value={i}>
