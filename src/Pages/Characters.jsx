@@ -12,11 +12,17 @@ const API_URL = 'https://rickandmortyapi.com/api';
 export default function Characters() {
   const [cartoonData, setCartoonData] = useState(null);
   const [search, setSearch] = useState('');
-  const [species, setSpecies] = useState('');
-  const [gender, setGender] = useState('');
-  const [status, setStatus] = useState('');
+
   const [pageNumber, setPageNumber] = useState(1);
-  const { onClickAdvancedBtn } = useOutletContext();
+  const {
+    onClickAdvancedBtn,
+    species,
+    setSpecies,
+    gender,
+    setGender,
+    status,
+    setStatus,
+  } = useOutletContext();
 
   useEffect(() => {
     async function getData() {
@@ -24,21 +30,26 @@ export default function Characters() {
         `${API_URL}/character/?page=${pageNumber}&name=${search}&species=${species}&gender=${gender}&status=${status}`
       );
       const data = await res.json();
-      setCartoonData(data);
+      if (pageNumber === 1) {
+        setCartoonData(data);
+      } else {
+        setCartoonData(prev => ({
+          ...data,
+          results: [...(prev?.results || []), ...data.results],
+        }));
+      }
     }
     getData();
-  }, [search, search, species, gender, status]);
+  }, [search, species, gender, status, pageNumber]);
+
+  useEffect(() => {
+    setPageNumber(1);
+  }, [species, gender, status]);
 
   console.log(cartoonData);
 
-  async function handleLoadMore() {
-    const res = await fetch(
-      `${API_URL}/character/?page=${pageNumber}&name=${search}&species=${species}&gender=${gender}&status=${status}`
-    );
-    const data = await res.json();
-    setCartoonData(data);
-    setPageNumber(x => x + 1);
-    console.log(data.results);
+  function handleLoadMore() {
+    setPageNumber(prev => prev + 1);
   }
 
   return (

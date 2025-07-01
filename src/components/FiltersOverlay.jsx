@@ -1,7 +1,17 @@
 import Select from '../components/Select';
 import { SPECIES, GENDER, STATUS } from '../data/filtersData';
 
-export default function FiltersOverlay({ onClickClose }) {
+export default function FiltersOverlay({
+  species,
+  setSpecies,
+  gender,
+  setGender,
+  status,
+  setStatus,
+  onClickClose,
+}) {
+  console.log(gender);
+
   return (
     <div
       onClick={onClickClose}
@@ -18,9 +28,43 @@ export default function FiltersOverlay({ onClickClose }) {
           </svg>
         </div>
         <div className="flex flex-col gap-4 mb-8">
-          <Select className="w-full" />
-          <Select className="w-full" />
-          <Select className="w-full" />
+          <Select
+            onChange={e => setSpecies(e.target.value)}
+            value={species}
+            name="Species"
+            className="w-full"
+          >
+            {SPECIES.map(i => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </Select>
+          <Select
+            onChange={e => setGender(e.target.value)}
+            value={gender}
+            name="Gender"
+            className="w-full"
+          >
+            {GENDER.map(i => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </Select>
+
+          <Select
+            onChange={e => setStatus(e.target.value)}
+            value={status}
+            name="Status"
+            className="w-full"
+          >
+            {STATUS.map(i => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </Select>
         </div>
         <button className="w-full h-9 bg-blue2 text-blue1 rounded-sm shadow-adv-filters-btn">
           Apply
