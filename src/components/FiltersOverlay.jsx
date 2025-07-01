@@ -5,13 +5,13 @@ export default function FiltersOverlay({ onClickClose }) {
   return (
     <div
       onClick={onClickClose}
-      className="fixed inset-0 z-50 bg-black opacity-60 md:hidden"
+      className="fixed inset-0 z-50 bg-overlay md:hidden"
     >
       <div
         onClick={e => e.stopPropagation()}
-        className="w-[80%] absolute top-1/2 left-1/2 -translate-1/2 bg-white rounded-sm px-3.5"
+        className="w-[80%] absolute top-1/2 left-1/2 -translate-1/2 bg-white rounded-sm pt-4 pb-5 px-3.5"
       >
-        <div className="flex justify-between">
+        <div className="flex justify-between pb-4">
           <p>Filters</p>
           <svg onClick={onClickClose} className="size-6 fill-gray10">
             <use href="./sprite.svg#icon-close"></use>

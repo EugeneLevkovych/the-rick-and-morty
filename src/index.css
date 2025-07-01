@@ -45,4 +45,5 @@ body {
 
   --color-blue1: #2196f3;
   --color-blue2: #e3f2fd;
+  --color-overlay: rgba(46, 47, 66, 0.6);
 }
