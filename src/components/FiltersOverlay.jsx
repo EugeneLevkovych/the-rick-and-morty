@@ -9,7 +9,7 @@ export default function FiltersOverlay({ onClickClose }) {
     >
       <div
         onClick={e => e.stopPropagation()}
-        className="absolute top-1/2 left-1/2 -translate-1/2 bg-white px-3.5"
+        className="w-[80%] absolute top-1/2 left-1/2 -translate-1/2 bg-white rounded-sm px-3.5"
       >
         <div className="flex justify-between">
           <p>Filters</p>
@@ -18,9 +18,9 @@ export default function FiltersOverlay({ onClickClose }) {
           </svg>
         </div>
         <div className="flex flex-col gap-4 mb-8">
-          <Select className="w-full min-w-70" />
-          <Select className="w-full min-w-70" />
-          <Select className="w-full min-w-70" />
+          <Select className="w-full" />
+          <Select className="w-full" />
+          <Select className="w-full" />
         </div>
         <button>Apply</button>
       </div>
