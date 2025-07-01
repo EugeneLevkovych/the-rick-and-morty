@@ -1,9 +1,15 @@
-export default function Select({ onChange, value, children, name }) {
+export default function Select({
+  onChange,
+  value,
+  children,
+  name,
+  className = '',
+}) {
   return (
     <select
       value={value}
       name={name}
-      className="w-60 h-14 hidden md:block border rounded-lg border-gray1 p-4"
+      className={`h-14 border rounded-lg border-gray1 p-4 ${className}`}
       onChange={onChange}
     >
       <option value="" disabled hidden>

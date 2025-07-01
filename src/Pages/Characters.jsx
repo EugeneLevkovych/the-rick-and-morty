@@ -60,6 +60,7 @@ export default function Characters() {
           onChange={e => setSpecies(e.target.value)}
           value={species}
           name="Species"
+          className="hidden md:block w-60"
         >
           {SPECIES.map(i => (
             <option key={i} value={i}>
@@ -71,6 +72,7 @@ export default function Characters() {
           onChange={e => setGender(e.target.value)}
           value={gender}
           name="Gender"
+          className="hidden md:block w-60"
         >
           {GENDER.map(i => (
             <option key={i} value={i}>
@@ -82,6 +84,7 @@ export default function Characters() {
           onChange={e => setStatus(e.target.value)}
           value={status}
           name="Status"
+          className="hidden md:block w-60"
         >
           {STATUS.map(i => (
             <option key={i} value={i}>
