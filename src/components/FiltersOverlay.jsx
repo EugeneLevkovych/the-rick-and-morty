@@ -22,7 +22,9 @@ export default function FiltersOverlay({ onClickClose }) {
           <Select className="w-full" />
           <Select className="w-full" />
         </div>
-        <button>Apply</button>
+        <button className="w-full h-9 bg-blue2 text-blue1 rounded-sm shadow-adv-filters-btn">
+          Apply
+        </button>
       </div>
     </div>
   );
