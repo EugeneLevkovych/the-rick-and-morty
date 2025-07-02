@@ -67,7 +67,7 @@ export default function Characters() {
   return (
     <div className="container pt-8 md:pt-6.5 pb-4 md:pb-11 cont-p-m">
       <img className="mx-auto mb-8 md:mb-4" src={logoBig} alt="Rick & Morty" />
-      <div className="relative flex gap-5 mb-4 md:mb-12">
+      <div className="flex gap-5 mb-4 md:mb-12">
         <Input search={search} setSearch={setSearch} />
         <Select
           onChange={e => setSpecies(e.target.value)}

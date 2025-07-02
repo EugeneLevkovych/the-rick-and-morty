@@ -1,6 +1,6 @@
 export default function Input({ search, setSearch }) {
   return (
-    <>
+    <div className="relative">
       <svg className="size-6 absolute top-4 left-4 fill-gray1">
         <use href="/sprite.svg#icon-leading"></use>
       </svg>
@@ -12,6 +12,6 @@ export default function Input({ search, setSearch }) {
         onChange={e => setSearch(e.target.value)}
         name="search"
       />
-    </>
+    </div>
   );
 }
