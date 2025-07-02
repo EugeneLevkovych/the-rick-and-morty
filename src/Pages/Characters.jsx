@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import logoBig from '../assets/images/logo-big.png';
 import CharacterCard from '../components/CharacterCard';
 import LoadMoreBtn from '../components/LoadMoreBtn';
@@ -26,19 +26,30 @@ export default function Characters() {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(
-        `${API_URL}/character/?page=${pageNumber}&name=${search}&species=${species}&gender=${gender}&status=${status}`
-      );
-      const data = await res.json();
-      if (pageNumber === 1) {
-        setCartoonData(data);
-      } else {
-        setCartoonData(prev => ({
-          ...data,
-          results: [...(prev?.results || []), ...data.results],
-        }));
+      try {
+        const response = await axios.get(`${API_URL}/character/`, {
+          params: {
+            page: pageNumber,
+            name: search,
+            species,
+            gender,
+            status,
+          },
+        });
+        const data = response.data;
+        if (pageNumber === 1) {
+          setCartoonData(data);
+        } else {
+          setCartoonData(prev => ({
+            ...data,
+            results: [...(prev?.results || []), ...data.results],
+          }));
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
     }
+
     getData();
   }, [search, species, gender, status, pageNumber]);
 

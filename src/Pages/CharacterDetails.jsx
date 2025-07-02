@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getCharacterDetails } from '../data/characterDetailsData';
+import axios from 'axios';
 
 export default function CharacterDetails() {
   const location = useLocation();
@@ -9,34 +10,35 @@ export default function CharacterDetails() {
   const [loadingEpisodes, setLoadingEpisodes] = useState(true);
 
   useEffect(() => {
-    const fetchEpisodes = async () => {
-      if (!character?.episode) return;
-
-      try {
-        setLoadingEpisodes(true);
-        const episodeIds = character.episode.map(url => {
-          const parts = url.split('/');
-
-          return parts[parts.length - 1];
-        });
-
-        const response = await fetch(
-          `https://rickandmortyapi.com/api/episode/${episodeIds.join(',')}`
-        );
-        const data = await response.json();
-
-        const episodesData = Array.isArray(data) ? data : [data];
-        setEpisodes(episodesData);
-      } catch (error) {
-        console.error('Error fetching episodes:', error);
-        setEpisodes([]);
-      } finally {
-        setLoadingEpisodes(false);
-      }
-    };
-
     fetchEpisodes();
   }, [character]);
+
+  async function fetchEpisodes() {
+    if (!character?.episode) return;
+
+    try {
+      setLoadingEpisodes(true);
+
+      const episodeIds = character.episode.map(url => {
+        const parts = url.split('/');
+        return parts[parts.length - 1];
+      });
+
+      const response = await axios.get(
+        `https://rickandmortyapi.com/api/episode/${episodeIds.join(',')}`
+      );
+
+      const data = response.data;
+      const episodesData = Array.isArray(data) ? data : [data];
+
+      setEpisodes(episodesData);
+    } catch (error) {
+      console.error('Error fetching episodes:', error);
+      setEpisodes([]);
+    } finally {
+      setLoadingEpisodes(false);
+    }
+  }
 
   return (
     <div className="container pt-6 pb-20.5 md:pt-10.5 md:pb-9 cont-p-m">
