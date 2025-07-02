@@ -15,7 +15,10 @@ export default function FiltersOverlay({ onClickClose, children }) {
           </svg>
         </div>
         <div className="flex flex-col gap-4 mb-8">{children}</div>
-        <button className="w-full h-9 bg-blue2 text-blue1 rounded-sm shadow-adv-filters-btn">
+        <button
+          onClick={onClickClose}
+          className="w-full h-9 bg-blue2 text-blue1 rounded-sm shadow-adv-filters-btn"
+        >
           Apply
         </button>
       </div>

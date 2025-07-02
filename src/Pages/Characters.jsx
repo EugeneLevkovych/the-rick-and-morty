@@ -14,7 +14,6 @@ const API_URL = 'https://rickandmortyapi.com/api';
 export default function Characters() {
   const [cartoonData, setCartoonData] = useState(null);
   const [search, setSearch] = useState('');
-
   const [pageNumber, setPageNumber] = useState(1);
   const {
     onClickAdvancedBtn,
