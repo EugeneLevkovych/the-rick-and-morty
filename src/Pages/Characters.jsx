@@ -112,13 +112,7 @@ export default function Characters() {
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {cartoonData &&
           cartoonData.results.map(item => (
-            <CharacterCard
-              key={item.id}
-              src={item.image}
-              name={item.name}
-              species={item.species}
-              character={item}
-            />
+            <CharacterCard key={item.id} character={item} />
           ))}
       </ul>
       <LoadMoreBtn onClick={handleLoadMore} />

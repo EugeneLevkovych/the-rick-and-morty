@@ -5,10 +5,58 @@ import LoadMoreBtn from '../components/LoadMoreBtn';
 import Select from '../components/Select';
 import { TYPE, DIMENSION } from '../data/filtersData';
 import { useOutletContext } from 'react-router';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import LocationsCard from '../components/LocationsCard';
+
+const API_URL_2 = 'https://rickandmortyapi.com/api';
 
 export default function Locations() {
+  const [searchLocation, setSearchLocation] = useState('');
+  const [locationData, setLocationData] = useState('');
+  const [pageNumberLocation, setPageNumberLocation] = useState(1);
+
   const { onClickAdvanced2Btn, type, setType, dimension, setDimension } =
     useOutletContext();
+
+  useEffect(() => {
+    async function fetchLocationsData() {
+      try {
+        const response = await axios.get(`${API_URL_2}/location/`, {
+          params: {
+            page: pageNumberLocation,
+            name: searchLocation,
+            dimension,
+            type,
+          },
+        });
+        const data = response.data;
+        console.log(data);
+        console.log(pageNumberLocation);
+
+        if (pageNumberLocation === 1) {
+          setLocationData(data);
+        } else {
+          setLocationData(prev => ({
+            ...data,
+            results: [...(prev?.results || []), ...data.results],
+          }));
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    fetchLocationsData();
+  }, [searchLocation, type, dimension, pageNumberLocation]);
+
+  useEffect(() => {
+    setPageNumberLocation(1);
+  }, [dimension, type]);
+
+  function handleLoadMoreLocations() {
+    setPageNumberLocation(prev => prev + 1);
+  }
 
   return (
     <div className="container pt-4 pb-6 cont-p-m">
@@ -19,7 +67,11 @@ export default function Locations() {
         alt="Rick & Morty"
       />
       <div className="md:flex md:gap-5 md:justify-center mb-4 md:mb-12">
-        <Input className="w-full md:w-81.5" />
+        <Input
+          search={searchLocation}
+          setSearch={setSearchLocation}
+          className="w-full md:w-81.5"
+        />
         <Select
           onChange={e => setType(e.target.value)}
           value={type}
@@ -46,7 +98,13 @@ export default function Locations() {
         </Select>
       </div>
       <AdvFiltBtn onClick={onClickAdvanced2Btn} />
-      <LoadMoreBtn />
+      <ul className="flex flex-wrap justify-center gap-5 mb-12">
+        {locationData &&
+          locationData.results.map(item => (
+            <LocationsCard key={item.id} locationObj={item} />
+          ))}
+      </ul>
+      <LoadMoreBtn onClick={handleLoadMoreLocations} />
     </div>
   );
 }
