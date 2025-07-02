@@ -10,8 +10,6 @@ export default function FiltersOverlay({
   setStatus,
   onClickClose,
 }) {
-  console.log(gender);
-
   return (
     <div
       onClick={onClickClose}

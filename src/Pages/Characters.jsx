@@ -58,8 +58,6 @@ export default function Characters() {
     setPageNumber(1);
   }, [species, gender, status]);
 
-  console.log(cartoonData);
-
   function handleLoadMore() {
     setPageNumber(prev => prev + 1);
   }
@@ -67,13 +65,17 @@ export default function Characters() {
   return (
     <div className="container pt-8 md:pt-6.5 pb-4 md:pb-11 cont-p-m">
       <img className="mx-auto mb-8 md:mb-4" src={logoBig} alt="Rick & Morty" />
-      <div className="flex gap-5 mb-4 md:mb-12">
-        <Input search={search} setSearch={setSearch} />
+      <div className="md:flex gap-5 justify-center mb-4 md:mb-12">
+        <Input
+          search={search}
+          setSearch={setSearch}
+          className="w-full md:w-60"
+        />
         <Select
           onChange={e => setSpecies(e.target.value)}
           value={species}
           name="Species"
-          className="hidden md:block w-60 xl:w-73"
+          className="hidden md:block w-60"
         >
           {SPECIES.map(i => (
             <option key={i} value={i}>
@@ -85,7 +87,7 @@ export default function Characters() {
           onChange={e => setGender(e.target.value)}
           value={gender}
           name="Gender"
-          className="hidden md:block w-60 xl:w-73"
+          className="hidden md:block w-60"
         >
           {GENDER.map(i => (
             <option key={i} value={i}>
@@ -97,7 +99,7 @@ export default function Characters() {
           onChange={e => setStatus(e.target.value)}
           value={status}
           name="Status"
-          className="hidden md:block w-60 xl:w-73"
+          className="hidden md:block w-60"
         >
           {STATUS.map(i => (
             <option key={i} value={i}>
