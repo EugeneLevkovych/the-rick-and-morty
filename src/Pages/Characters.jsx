@@ -7,6 +7,7 @@ import { SPECIES, GENDER, STATUS } from '../data/filtersData';
 import Select from '../components/Select';
 import { useOutletContext } from 'react-router';
 import Input from '../components/Input';
+import AdvFiltBtn from '../components/AdvFiltBtn';
 
 const API_URL = 'https://rickandmortyapi.com/api';
 
@@ -108,15 +109,7 @@ export default function Characters() {
           ))}
         </Select>
       </div>
-      <div
-        onClick={onClickAdvancedBtn}
-        className="relative md:hidden items-center bg-blue2 shadow-adv-filters-btn rounded-lg p-4 mb-12"
-      >
-        <svg className="absolute top-4 left-6 size-5 fill-gray4">
-          <use href="./sprite.svg#icon-burger2"></use>
-        </svg>
-        <p className="text-center text-blue1">Advanced Filters</p>
-      </div>
+      <AdvFiltBtn onClick={onClickAdvancedBtn} />
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {cartoonData &&
           cartoonData.results.map(item => (

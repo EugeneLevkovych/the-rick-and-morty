@@ -1,4 +1,5 @@
 import locationsImg from '../assets/images/locations.png';
+import AdvFiltBtn from '../components/AdvFiltBtn';
 import Input from '../components/Input';
 import LoadMoreBtn from '../components/LoadMoreBtn';
 import Select from '../components/Select';
@@ -44,6 +45,7 @@ export default function Locations() {
           ))}
         </Select>
       </div>
+      <AdvFiltBtn />
       <LoadMoreBtn />
     </div>
   );
