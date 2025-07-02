@@ -4,11 +4,11 @@ import Input from '../components/Input';
 import LoadMoreBtn from '../components/LoadMoreBtn';
 import Select from '../components/Select';
 import { TYPE, DIMENSION } from '../data/filtersData';
-import { useState } from 'react';
+import { useOutletContext } from 'react-router';
 
 export default function Locations() {
-  const [type, setType] = useState('');
-  const [dimension, setDimension] = useState('');
+  const { onClickAdvanced2Btn, type, setType, dimension, setDimension } =
+    useOutletContext();
 
   return (
     <div className="container pt-4 pb-6 cont-p-m">
@@ -23,7 +23,7 @@ export default function Locations() {
         <Select
           onChange={e => setType(e.target.value)}
           value={type}
-          name="Species"
+          name="type"
           className="hidden md:block w-60 xl:w-73 2xl:w-83"
         >
           {TYPE.map(i => (
@@ -35,7 +35,7 @@ export default function Locations() {
         <Select
           onChange={e => setDimension(e.target.value)}
           value={dimension}
-          name="Gender"
+          name="dimension"
           className="hidden md:block w-60 xl:w-73 2xl:w-83"
         >
           {DIMENSION.map(i => (
@@ -45,7 +45,7 @@ export default function Locations() {
           ))}
         </Select>
       </div>
-      <AdvFiltBtn />
+      <AdvFiltBtn onClick={onClickAdvanced2Btn} />
       <LoadMoreBtn />
     </div>
   );

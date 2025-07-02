@@ -1,15 +1,4 @@
-import Select from '../components/Select';
-import { SPECIES, GENDER, STATUS } from '../data/filtersData';
-
-export default function FiltersOverlay({
-  species,
-  setSpecies,
-  gender,
-  setGender,
-  status,
-  setStatus,
-  onClickClose,
-}) {
+export default function FiltersOverlay({ onClickClose, children }) {
   return (
     <div
       onClick={onClickClose}
@@ -25,45 +14,7 @@ export default function FiltersOverlay({
             <use href="./sprite.svg#icon-close"></use>
           </svg>
         </div>
-        <div className="flex flex-col gap-4 mb-8">
-          <Select
-            onChange={e => setSpecies(e.target.value)}
-            value={species}
-            name="Species"
-            className="w-full"
-          >
-            {SPECIES.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-          <Select
-            onChange={e => setGender(e.target.value)}
-            value={gender}
-            name="Gender"
-            className="w-full"
-          >
-            {GENDER.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-
-          <Select
-            onChange={e => setStatus(e.target.value)}
-            value={status}
-            name="Status"
-            className="w-full"
-          >
-            {STATUS.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-        </div>
+        <div className="flex flex-col gap-4 mb-8">{children}</div>
         <button className="w-full h-9 bg-blue2 text-blue1 rounded-sm shadow-adv-filters-btn">
           Apply
         </button>
