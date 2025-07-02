@@ -6,6 +6,7 @@ import LoadMoreBtn from '../components/LoadMoreBtn';
 import { SPECIES, GENDER, STATUS } from '../data/filtersData';
 import Select from '../components/Select';
 import { useOutletContext } from 'react-router';
+import Input from '../components/Input';
 
 const API_URL = 'https://rickandmortyapi.com/api';
 
@@ -67,17 +68,7 @@ export default function Characters() {
     <div className="container pt-8 md:pt-6.5 pb-4 md:pb-11 cont-p-m">
       <img className="mx-auto mb-8 md:mb-4" src={logoBig} alt="Rick & Morty" />
       <div className="relative flex gap-5 mb-4 md:mb-12">
-        <svg className="size-6 absolute top-4 left-4 fill-gray1">
-          <use href="/sprite.svg#icon-leading"></use>
-        </svg>
-        <input
-          value={search}
-          className="w-full md:w-60 xl:w-73 border rounded-lg border-gray1 py-3 pl-12"
-          type="text"
-          placeholder="Filter by name..."
-          onChange={e => setSearch(e.target.value)}
-          name="search"
-        />
+        <Input search={search} setSearch={setSearch} />
         <Select
           onChange={e => setSpecies(e.target.value)}
           value={species}
