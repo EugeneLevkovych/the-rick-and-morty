@@ -2,6 +2,7 @@ import axios from 'axios';
 import { NavLink, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getCharacterDetails } from '../data/characterDetailsData';
+import { API_URL } from '../data/api.js';
 
 export default function CharacterDetails() {
   const location = useLocation();
@@ -25,7 +26,7 @@ export default function CharacterDetails() {
       });
 
       const response = await axios.get(
-        `https://rickandmortyapi.com/api/episode/${episodeIds.join(',')}`
+        `${API_URL}/episode/${episodeIds.join(',')}`
       );
 
       const data = response.data;
