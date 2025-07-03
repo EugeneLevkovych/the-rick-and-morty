@@ -1,25 +1,25 @@
+import axios from 'axios';
 import { NavLink, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getCharacterDetails } from '../data/characterDetailsData';
-import axios from 'axios';
 
 export default function CharacterDetails() {
   const location = useLocation();
-  const character = location.state?.characterObj;
+  const characterObj = location.state?.characterObj;
   const [episodes, setEpisodes] = useState([]);
   const [loadingEpisodes, setLoadingEpisodes] = useState(true);
 
   useEffect(() => {
     fetchEpisodes();
-  }, [character]);
+  }, [characterObj]);
 
   async function fetchEpisodes() {
-    if (!character?.episode) return;
+    if (!characterObj?.episode) return;
 
     try {
       setLoadingEpisodes(true);
 
-      const episodeIds = character.episode.map(url => {
+      const episodeIds = characterObj.episode.map(url => {
         const parts = url.split('/');
         return parts[parts.length - 1];
       });
@@ -52,10 +52,10 @@ export default function CharacterDetails() {
       </NavLink>
       <img
         className="size-37 md:size-75 border-5 border-gray9 rounded-full mx-auto md:-mt-18 mb-4"
-        src={character.image}
+        src={characterObj.image}
       />
       <p className="text-[2rem] text-center text-gray7 pb-4">
-        {character.name}
+        {characterObj.name}
       </p>
       <div className="flex flex-col md:flex-row gap-13 md:gap-5">
         <div className="max-w-103 w-full">
@@ -63,7 +63,7 @@ export default function CharacterDetails() {
             Informations
           </p>
           <ul>
-            {getCharacterDetails(character).map(([label, value]) => (
+            {getCharacterDetails(characterObj).map(([label, value]) => (
               <li
                 key={label}
                 className="w-full border-b border-gray6 pt-2 pb-3 px-4"

@@ -1,4 +1,6 @@
-import { NavLink } from 'react-router';
+import axios from 'axios';
+
+import { NavLink, useLocation } from 'react-router';
 
 export default function LocationDetails() {
   return (
