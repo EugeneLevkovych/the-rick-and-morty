@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { NavLink, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
-import CharacterCard from '../components/CharacterCard';
+import { getLocationDetails } from '../data/locationDetailData';
 
 export default function LocationDetails() {
   const location = useLocation();
@@ -47,10 +47,19 @@ export default function LocationDetails() {
           </div>
         </NavLink>
         <p className="text-4xl text-center text-gray7">{locationObj.name}</p>
-        <div className="flex justify-around">
-          <p>{locationObj.type}</p>
-          <p>{locationObj.dimension}</p>
-        </div>
+        <ul className="flex justify-around">
+          {getLocationDetails(locationObj).map(([label, value]) => (
+            <li
+              key={label}
+              className="w-full border-b border-gray6 pt-2 pb-3 px-4"
+            >
+              <p className="font-bold tracking-[0.01em] text-gray7">{label}:</p>
+              <p className="text-sm leading-[1.42] tracking-[.02em] text-gray8">
+                {value}
+              </p>
+            </li>
+          ))}
+        </ul>
         <p className="font-medium text-xl leading-[1.2 tracking-[.01em]] text-gray5 mb-6">
           Residents
         </p>
