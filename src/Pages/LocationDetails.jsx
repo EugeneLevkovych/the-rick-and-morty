@@ -7,12 +7,11 @@ export default function LocationDetails() {
   const location = useLocation();
   const locationObj = location.state?.locationObj;
   const [residentsData, setResidentsData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  console.log(residentsData);
+  const [loadingResidents, setLoadingResidents] = useState(true);
 
   useEffect(() => {
     async function fetchResidents() {
-      setLoading(true);
+      setLoadingResidents(true);
 
       if (locationObj?.residents?.length) {
         try {
@@ -26,7 +25,7 @@ export default function LocationDetails() {
         } catch (error) {
           console.error('Error fetching residents:', error);
         } finally {
-          setLoading(false);
+          setLoadingResidents(false);
         }
       }
     }
@@ -47,16 +46,23 @@ export default function LocationDetails() {
             <p>Go back</p>
           </div>
         </NavLink>
-        <p>{locationObj.name}</p>
+        <p className="text-4xl text-center text-gray7">{locationObj.name}</p>
         <div className="flex justify-around">
           <p>{locationObj.type}</p>
           <p>{locationObj.dimension}</p>
         </div>
-        <p>Residents</p>
-        <ul className="flex flex-wrap justify-center gap-5 mb-12">
-          {residentsData.length > 0 ? (
-            residentsData.map(resident => (
-              <li className="h-78 md:h-61 w-full md:w-60 rounded-sm shadow-card overflow-hidden">
+        <p className="font-medium text-xl leading-[1.2 tracking-[.01em]] text-gray5 mb-6">
+          Residents
+        </p>
+        {loadingResidents ? (
+          <p>Loading Residents...</p>
+        ) : (
+          <ul className="flex flex-wrap justify-center gap-5 mb-12">
+            {residentsData.map(resident => (
+              <li
+                className="h-78 md:h-61 w-full md:w-60 rounded-sm shadow-card overflow-hidden"
+                key={resident.id}
+              >
                 <img className="h-58 md:h-42 w-full" src={resident.image} />
                 <div className="px-4 py-3">
                   <p className="font-medium text-xl leading-6 tracking-[.01em] text-gray2">
@@ -67,11 +73,9 @@ export default function LocationDetails() {
                   </p>
                 </div>
               </li>
-            ))
-          ) : (
-            <p>No residents found.</p>
-          )}
-        </ul>
+            ))}
+          </ul>
+        )}
       </div>
     </>
   );
