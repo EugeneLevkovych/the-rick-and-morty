@@ -1,8 +1,6 @@
 import { NavLink } from 'react-router';
 
 export default function CharacterCard({ characterObj }) {
-  console.log(characterObj);
-
   return (
     <li className="h-78 md:h-61 w-full md:w-60 rounded-sm shadow-card overflow-hidden cursor-pointer">
       <NavLink to={'/character-details'} state={{ characterObj }}>

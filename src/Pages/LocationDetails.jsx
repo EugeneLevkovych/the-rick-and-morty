@@ -2,6 +2,7 @@ import axios from 'axios';
 import { NavLink, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getLocationDetails } from '../data/locationDetailData';
+import { API_URL } from '../data/api.js';
 
 export default function LocationDetails() {
   const location = useLocation();
@@ -18,9 +19,7 @@ export default function LocationDetails() {
           const ids = locationObj.residents
             .map(url => url.split('/').pop())
             .join(',');
-          const res = await axios.get(
-            `https://rickandmortyapi.com/api/character/${ids}`
-          );
+          const res = await axios.get(`${API_URL}/character/${ids}`);
           setResidentsData(Array.isArray(res.data) ? res.data : [res.data]);
         } catch (error) {
           console.error('Error fetching residents:', error);

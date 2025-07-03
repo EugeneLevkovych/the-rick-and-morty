@@ -30,8 +30,6 @@ export default function Locations() {
           },
         });
         const data = response.data;
-        console.log(data);
-        console.log(pageNumberLocation);
 
         if (pageNumberLocation === 1) {
           setLocationData(data);
