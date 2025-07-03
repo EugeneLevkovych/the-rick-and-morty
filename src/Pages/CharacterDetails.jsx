@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default function CharacterDetails() {
   const location = useLocation();
-  const character = location.state?.character;
+  const character = location.state?.characterObj;
   const [episodes, setEpisodes] = useState([]);
   const [loadingEpisodes, setLoadingEpisodes] = useState(true);
 

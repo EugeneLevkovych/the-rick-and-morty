@@ -8,8 +8,7 @@ import Select from '../components/Select';
 import { useOutletContext } from 'react-router';
 import Input from '../components/Input';
 import AdvFiltBtn from '../components/AdvFiltBtn';
-
-const API_URL = 'https://rickandmortyapi.com/api';
+import { API_URL } from '../data/api.js';
 
 export default function Characters() {
   const [cartoonData, setCartoonData] = useState(null);
@@ -112,7 +111,7 @@ export default function Characters() {
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {cartoonData &&
           cartoonData.results.map(item => (
-            <CharacterCard key={item.id} character={item} />
+            <CharacterCard key={item.id} characterObj={item} />
           ))}
       </ul>
       <LoadMoreBtn onClick={handleLoadMore} />

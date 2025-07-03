@@ -8,8 +8,7 @@ import { useOutletContext } from 'react-router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LocationsCard from '../components/LocationsCard';
-
-const API_URL_2 = 'https://rickandmortyapi.com/api';
+import { API_URL } from '../data/api.js';
 
 export default function Locations() {
   const [searchLocation, setSearchLocation] = useState('');
@@ -22,7 +21,7 @@ export default function Locations() {
   useEffect(() => {
     async function fetchLocationsData() {
       try {
-        const response = await axios.get(`${API_URL_2}/location/`, {
+        const response = await axios.get(`${API_URL}/location/`, {
           params: {
             page: pageNumberLocation,
             name: searchLocation,
