@@ -46,13 +46,12 @@ export default function LocationDetails() {
             <p>Go back</p>
           </div>
         </NavLink>
-        <p className="text-4xl text-center text-gray7">{locationObj.name}</p>
-        <ul className="flex justify-around">
+        <p className="text-4xl text-center text-gray7 mb-6">
+          {locationObj.name}
+        </p>
+        <ul className="flex justify-around mb-16">
           {getLocationDetails(locationObj).map(([label, value]) => (
-            <li
-              key={label}
-              className="w-full border-b border-gray6 pt-2 pb-3 px-4"
-            >
+            <li key={label}>
               <p className="font-bold tracking-[0.01em] text-gray7">{label}:</p>
               <p className="text-sm leading-[1.42] tracking-[.02em] text-gray8">
                 {value}
@@ -66,7 +65,7 @@ export default function LocationDetails() {
         {loadingResidents ? (
           <p>Loading Residents...</p>
         ) : (
-          <ul className="flex flex-wrap justify-center gap-5 mb-12">
+          <ul className="flex flex-wrap justify-center gap-5">
             {residentsData.map(resident => (
               <li
                 className="h-78 md:h-61 w-full md:w-60 rounded-sm shadow-card overflow-hidden"
