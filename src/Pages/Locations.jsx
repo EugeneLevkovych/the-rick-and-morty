@@ -9,11 +9,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LocationsCard from '../components/LocationsCard';
 import { API_URL } from '../data/api.js';
+import { handleLoadMore } from '../functions/functions.js';
 
 export default function Locations() {
   const [searchLocation, setSearchLocation] = useState('');
   const [locationData, setLocationData] = useState('');
-  const [pageNumberLocation, setPageNumberLocation] = useState(1);
+  const [pageNumber, setPageNumber] = useState(1);
 
   const { onClickAdvanced2Btn, type, setType, dimension, setDimension } =
     useOutletContext();
@@ -23,7 +24,7 @@ export default function Locations() {
       try {
         const response = await axios.get(`${API_URL}/location/`, {
           params: {
-            page: pageNumberLocation,
+            page: pageNumber,
             name: searchLocation,
             dimension,
             type,
@@ -31,7 +32,7 @@ export default function Locations() {
         });
         const data = response.data;
 
-        if (pageNumberLocation === 1) {
+        if (pageNumber === 1) {
           setLocationData(data);
         } else {
           setLocationData(prev => ({
@@ -45,15 +46,11 @@ export default function Locations() {
     }
 
     fetchLocationsData();
-  }, [searchLocation, type, dimension, pageNumberLocation]);
+  }, [searchLocation, type, dimension, pageNumber]);
 
   useEffect(() => {
-    setPageNumberLocation(1);
+    setPageNumber(1);
   }, [dimension, type]);
-
-  function handleLoadMoreLocations() {
-    setPageNumberLocation(prev => prev + 1);
-  }
 
   return (
     <div className="container pt-4 pb-6 cont-p-m">
@@ -101,7 +98,7 @@ export default function Locations() {
             <LocationsCard key={item.id} locationObj={item} />
           ))}
       </ul>
-      <LoadMoreBtn onClick={handleLoadMoreLocations} />
+      <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
     </div>
   );
 }
