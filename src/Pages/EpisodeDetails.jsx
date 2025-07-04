@@ -9,25 +9,36 @@ export default function EpisodeDetails() {
   const episode = useLocation();
   const episodeObj = episode.state?.episodeObj;
   const [charactersData, setCharactersData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchEpisodes() {
-      const ids = episodeObj.characters
-        .map(url => url.split('/').pop())
-        .join(',');
-      const response = await axios.get(`${API_URL}/character/${ids}`);
+      setLoading(true);
 
-      const data = await response.data;
+      if (!episodeObj?.characters?.length) {
+        setLoading(false);
+        return <p>No episodes data found</p>;
+      }
+      try {
+        const ids = episodeObj.characters
+          .map(url => url.split('/').pop())
+          .join(',');
+        const response = await axios.get(`${API_URL}/character/${ids}`);
 
-      setCharactersData(
-        Array.isArray(response.data) ? response.data : [response.data]
-      );
+        const data = await response.data;
+
+        setCharactersData(
+          Array.isArray(response.data) ? response.data : [response.data]
+        );
+      } catch (error) {
+        console.error('Error fetching characters:', error);
+      } finally {
+        setLoading(false);
+      }
     }
 
     fetchEpisodes();
   }, [episodeObj]);
-
-  if (!episodeObj) return <p>No episodes data found</p>;
 
   return (
     <>
@@ -56,12 +67,15 @@ export default function EpisodeDetails() {
         <p className="font-medium text-xl leading-[1.2 tracking-[.01em]] text-gray5 mb-6">
           Cast
         </p>
-
-        <ul className="flex flex-wrap justify-center gap-5">
-          {charactersData.map(item => (
-            <CharacterCard key={item.id} characterObj={item} />
-          ))}
-        </ul>
+        {loading ? (
+          <p>Loading Residents...</p>
+        ) : (
+          <ul className="flex flex-wrap justify-center gap-5">
+            {charactersData.map(item => (
+              <CharacterCard key={item.id} characterObj={item} />
+            ))}
+          </ul>
+        )}
       </div>
     </>
   );

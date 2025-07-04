@@ -15,28 +15,28 @@ export default function LocationDetails() {
     async function fetchResidents() {
       setLoading(true);
 
-      if (locationObj?.residents?.length) {
-        try {
-          const ids = locationObj.residents
-            .map(url => url.split('/').pop())
-            .join(',');
-          const response = await axios.get(`${API_URL}/character/${ids}`);
+      if (!locationObj?.residents?.length) {
+        setLoading(false);
+        return <p>No location data found</p>;
+      }
+      try {
+        const ids = locationObj.residents
+          .map(url => url.split('/').pop())
+          .join(',');
+        const response = await axios.get(`${API_URL}/character/${ids}`);
 
-          const data = response.data;
+        const data = response.data;
 
-          setResidentsData(Array.isArray(data) ? data : [data]);
-        } catch (error) {
-          console.error('Error fetching residents:', error);
-        } finally {
-          setLoading(false);
-        }
+        setResidentsData(Array.isArray(data) ? data : [data]);
+      } catch (error) {
+        console.error('Error fetching residents:', error);
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchResidents();
   }, [locationObj]);
-
-  if (!locationObj) return <p>No location data found</p>;
 
   return (
     <>
