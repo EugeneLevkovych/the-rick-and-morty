@@ -10,7 +10,7 @@ export default function Select({
       <select
         value={value}
         name={name}
-        className="appearance-none h-14 w-full border rounded-lg border-gray1 p-4"
+        className="appearance-none h-14 w-full border rounded-lg border-gray1 cursor-pointer p-4"
         onChange={onChange}
       >
         <option value="" disabled hidden>
@@ -18,7 +18,7 @@ export default function Select({
         </option>
         {children}
       </select>
-      <svg className="absolute top-4 right-4 size-6">
+      <svg className="absolute top-4 right-4 size-6 cursor-pointer">
         <use href="./sprite.svg#icon-triangle-down"></use>
       </svg>
     </div>
