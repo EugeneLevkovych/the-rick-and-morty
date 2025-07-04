@@ -9,20 +9,19 @@ export default function EpisodeDetails() {
   const episode = useLocation();
   const episodeObj = episode.state?.episodeObj;
   const [charactersData, setCharactersData] = useState([]);
-  console.log(episodeObj);
 
   useEffect(() => {
     async function fetchEpisodes() {
       const ids = episodeObj.characters
         .map(url => url.split('/').pop())
         .join(',');
-      const res = await axios.get(`${API_URL}/character/${ids}`);
+      const response = await axios.get(`${API_URL}/character/${ids}`);
 
-      const data = await res.data;
+      const data = await response.data;
 
-      console.log(data);
-
-      setCharactersData(Array.isArray(res.data) ? res.data : [res.data]);
+      setCharactersData(
+        Array.isArray(response.data) ? response.data : [response.data]
+      );
     }
 
     fetchEpisodes();

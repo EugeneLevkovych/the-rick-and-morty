@@ -9,23 +9,26 @@ export default function LocationDetails() {
   const location = useLocation();
   const locationObj = location.state?.locationObj;
   const [residentsData, setResidentsData] = useState([]);
-  const [loadingResidents, setLoadingResidents] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchResidents() {
-      setLoadingResidents(true);
+      setLoading(true);
 
       if (locationObj?.residents?.length) {
         try {
           const ids = locationObj.residents
             .map(url => url.split('/').pop())
             .join(',');
-          const res = await axios.get(`${API_URL}/character/${ids}`);
-          setResidentsData(Array.isArray(res.data) ? res.data : [res.data]);
+          const response = await axios.get(`${API_URL}/character/${ids}`);
+
+          const data = response.data;
+
+          setResidentsData(Array.isArray(data) ? data : [data]);
         } catch (error) {
           console.error('Error fetching residents:', error);
         } finally {
-          setLoadingResidents(false);
+          setLoading(false);
         }
       }
     }
@@ -62,7 +65,7 @@ export default function LocationDetails() {
         <p className="font-medium text-xl leading-[1.2 tracking-[.01em]] text-gray5 mb-6">
           Residents
         </p>
-        {loadingResidents ? (
+        {loading ? (
           <p>Loading Residents...</p>
         ) : (
           <ul className="flex flex-wrap justify-center gap-5">

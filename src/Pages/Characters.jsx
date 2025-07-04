@@ -58,10 +58,6 @@ export default function Characters() {
     setPageNumber(1);
   }, [species, gender, status]);
 
-  // function handleLoadMore() {
-  //   setPageNumber(prev => prev + 1);
-  // }
-
   return (
     <div className="container pt-8 md:pt-6.5 pb-4 md:pb-11 cont-p-m">
       <img className="mx-auto mb-8 md:mb-4" src={logoBig} alt="Rick & Morty" />

@@ -8,7 +8,7 @@ export default function CharacterDetails() {
   const location = useLocation();
   const characterObj = location.state?.characterObj;
   const [episodes, setEpisodes] = useState([]);
-  const [loadingEpisodes, setLoadingEpisodes] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchEpisodes();
@@ -18,7 +18,7 @@ export default function CharacterDetails() {
     if (!characterObj?.episode) return;
 
     try {
-      setLoadingEpisodes(true);
+      setLoading(true);
 
       const episodeIds = characterObj.episode.map(url => {
         const parts = url.split('/');
@@ -37,7 +37,7 @@ export default function CharacterDetails() {
       console.error('Error fetching episodes:', error);
       setEpisodes([]);
     } finally {
-      setLoadingEpisodes(false);
+      setLoading(false);
     }
   }
 
@@ -83,7 +83,7 @@ export default function CharacterDetails() {
           <p className="font-medium text-xl leading-tight tracking-[.01em] text-gray5 mb-4">
             Episodes
           </p>
-          {loadingEpisodes ? (
+          {loading ? (
             <p>Loading episodes...</p>
           ) : (
             <ul>

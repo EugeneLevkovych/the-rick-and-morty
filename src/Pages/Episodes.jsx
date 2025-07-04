@@ -21,8 +21,7 @@ export default function Episodes() {
             name: searchEpisodes,
           },
         });
-        const data = await response.data;
-        console.log(data);
+        const data = response.data;
 
         if (pageNumber === 1) {
           setEpisodesData(data);
