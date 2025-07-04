@@ -19,7 +19,6 @@ export default function Episodes() {
           params: {
             page: pageNumber,
             name: searchEpisodes,
-            // air_date,
           },
         });
         const data = await response.data;
@@ -58,7 +57,7 @@ export default function Episodes() {
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {episodesData &&
           episodesData.results.map(item => (
-            <EpisodeCard key={item.id} episodeObj={item} />
+            <EpisodeCard key={item.name} episodeObj={item} />
           ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
