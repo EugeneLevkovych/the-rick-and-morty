@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getEpisodeDetails } from '../data/episodeDetailsData.js';
 import { API_URL } from '../data/api.js';
+import CharacterCard from '../components/CharacterCard.jsx';
 
 export default function EpisodeDetails() {
   const episode = useLocation();
@@ -58,21 +59,8 @@ export default function EpisodeDetails() {
         </p>
 
         <ul className="flex flex-wrap justify-center gap-5">
-          {charactersData.map(resident => (
-            <li
-              className="h-78 md:h-61 w-full md:w-60 rounded-sm shadow-card overflow-hidden"
-              key={resident.id}
-            >
-              <img className="h-58 md:h-42 w-full" src={resident.image} />
-              <div className="px-4 py-3">
-                <p className="font-medium text-xl leading-6 tracking-[.01em] text-gray2">
-                  {resident.name}
-                </p>
-                <p className="text-sm leading-6 tracking-[.02em] text-gray3">
-                  {resident.species}
-                </p>
-              </div>
-            </li>
+          {charactersData.map(item => (
+            <CharacterCard key={item.id} characterObj={item} />
           ))}
         </ul>
       </div>
