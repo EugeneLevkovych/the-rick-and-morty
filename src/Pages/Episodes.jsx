@@ -13,7 +13,7 @@ export default function Episodes() {
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
-    async function getEpisodesData() {
+    async function getData() {
       try {
         const response = await axios.get(`${API_URL}/episode`, {
           params: {
@@ -35,7 +35,7 @@ export default function Episodes() {
         console.error('Error fetching data:', error);
       }
     }
-    getEpisodesData();
+    getData();
   }, [searchEpisodes, pageNumber]);
 
   return (

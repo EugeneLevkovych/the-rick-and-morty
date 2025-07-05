@@ -20,7 +20,7 @@ export default function Locations() {
     useOutletContext();
 
   useEffect(() => {
-    async function fetchLocationsData() {
+    async function getData() {
       try {
         const response = await axios.get(`${API_URL}/location`, {
           params: {
@@ -45,7 +45,7 @@ export default function Locations() {
       }
     }
 
-    fetchLocationsData();
+    getData();
   }, [searchLocation, type, dimension, pageNumber]);
 
   useEffect(() => {
