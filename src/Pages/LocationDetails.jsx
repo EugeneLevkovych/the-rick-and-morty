@@ -17,7 +17,7 @@ export default function LocationDetails() {
 
       if (!locationObj?.residents?.length) {
         setLoading(false);
-        return <p>No location data found</p>;
+        return;
       }
       try {
         const ids = locationObj.residents

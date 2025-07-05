@@ -17,7 +17,7 @@ export default function EpisodeDetails() {
 
       if (!episodeObj?.characters?.length) {
         setLoading(false);
-        return <p>No episodes data found</p>;
+        return;
       }
       try {
         const ids = episodeObj.characters

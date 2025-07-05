@@ -15,10 +15,14 @@ export default function CharacterDetails() {
   }, [characterObj]);
 
   async function fetchEpisodes() {
-    if (!characterObj?.episode) return;
+    if (!characterObj?.episode?.length) {
+      setLoading(false);
+      return;
+    }
 
     try {
       setLoading(true);
+      console.log(characterObj);
 
       const episodeIds = characterObj.episode.map(url => {
         const parts = url.split('/');
