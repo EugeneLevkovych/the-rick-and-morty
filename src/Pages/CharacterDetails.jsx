@@ -19,11 +19,9 @@ export default function CharacterDetails() {
       setLoading(false);
       return;
     }
+    setLoading(true);
 
     try {
-      setLoading(true);
-      console.log(characterObj);
-
       const episodeIds = characterObj.episode.map(url => {
         const parts = url.split('/');
         return parts[parts.length - 1];
@@ -34,9 +32,8 @@ export default function CharacterDetails() {
       );
 
       const data = response.data;
-      const episodesData = Array.isArray(data) ? data : [data];
 
-      setEpisodes(episodesData);
+      setEpisodes(Array.isArray(data) ? data : [data]);
     } catch (error) {
       console.error('Error fetching episodes:', error);
       setEpisodes([]);
