@@ -22,7 +22,7 @@ export default function Locations() {
   useEffect(() => {
     async function fetchLocationsData() {
       try {
-        const response = await axios.get(`${API_URL}/location/`, {
+        const response = await axios.get(`${API_URL}/location`, {
           params: {
             page: pageNumber,
             name: searchLocation,

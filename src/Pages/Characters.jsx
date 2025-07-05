@@ -15,6 +15,7 @@ export default function Characters() {
   const [charactersData, setCharactersData] = useState(null);
   const [search, setSearch] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
+  const [error, setError] = useState(null);
   const {
     onClickAdvancedBtn,
     species,
@@ -28,7 +29,7 @@ export default function Characters() {
   useEffect(() => {
     async function getData() {
       try {
-        const response = await axios.get(`${API_URL}/character/`, {
+        const response = await axios.get(`${API_URL}/character`, {
           params: {
             page: pageNumber,
             name: search,
@@ -38,6 +39,8 @@ export default function Characters() {
           },
         });
         const data = response.data;
+        setError(null);
+
         if (pageNumber === 1) {
           setCharactersData(data);
         } else {
@@ -48,6 +51,7 @@ export default function Characters() {
         }
       } catch (error) {
         console.error('Error fetching data:', error);
+        setError('Failed to load characters. Please try again later.');
       }
     }
 
@@ -105,12 +109,17 @@ export default function Characters() {
         </Select>
       </div>
       <AdvFiltBtn onClick={onClickAdvancedBtn} />
-      <ul className="flex flex-wrap justify-center gap-5 mb-12">
-        {charactersData &&
-          charactersData.results.map(item => (
-            <CharacterCard key={item.id} characterObj={item} />
-          ))}
-      </ul>
+
+      {error ? (
+        <p className="text-center text-red-500">{error}</p>
+      ) : (
+        <ul className="flex flex-wrap justify-center gap-5 mb-12">
+          {charactersData &&
+            charactersData.results.map(item => (
+              <CharacterCard key={item.id} characterObj={item} />
+            ))}
+        </ul>
+      )}
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
     </div>
   );

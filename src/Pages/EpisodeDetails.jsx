@@ -32,6 +32,7 @@ export default function EpisodeDetails() {
         );
       } catch (error) {
         console.error('Error fetching characters:', error);
+        setCharactersData([]);
       } finally {
         setLoading(false);
       }

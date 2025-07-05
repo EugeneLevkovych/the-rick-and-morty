@@ -30,6 +30,7 @@ export default function LocationDetails() {
         setResidentsData(Array.isArray(data) ? data : [data]);
       } catch (error) {
         console.error('Error fetching residents:', error);
+        setResidentsData([]);
       } finally {
         setLoading(false);
       }
