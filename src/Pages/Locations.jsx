@@ -93,10 +93,9 @@ export default function Locations() {
       </div>
       <AdvFiltBtn onClick={onClickAdvanced2Btn} />
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
-        {locationData &&
-          locationData.results.map(item => (
-            <LocationsCard key={item.id} locationObj={item} />
-          ))}
+        {locationData.results.map(item => (
+          <LocationsCard key={item.id} locationObj={item} />
+        ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
     </div>

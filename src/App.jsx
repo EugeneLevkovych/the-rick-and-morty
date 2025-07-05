@@ -6,11 +6,13 @@ import Locations from './Pages/Locations';
 import CharacterDetails from './Pages/CharacterDetails';
 import LocationDetails from './Pages/LocationDetails';
 import EpisodeDetails from './Pages/EpisodeDetails';
+import ErrorPage from './Pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Characters /> },
       { path: 'locations', element: <Locations /> },
