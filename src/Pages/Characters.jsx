@@ -12,7 +12,7 @@ import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../functions/functions.js';
 
 export default function Characters() {
-  const [cartoonData, setCartoonData] = useState(null);
+  const [charactersData, setCharactersData] = useState(null);
   const [search, setSearch] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const {
@@ -39,9 +39,9 @@ export default function Characters() {
         });
         const data = response.data;
         if (pageNumber === 1) {
-          setCartoonData(data);
+          setCharactersData(data);
         } else {
-          setCartoonData(prev => ({
+          setCharactersData(prev => ({
             ...data,
             results: [...(prev?.results || []), ...data.results],
           }));
@@ -106,8 +106,8 @@ export default function Characters() {
       </div>
       <AdvFiltBtn onClick={onClickAdvancedBtn} />
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
-        {cartoonData &&
-          cartoonData.results.map(item => (
+        {charactersData &&
+          charactersData.results.map(item => (
             <CharacterCard key={item.id} characterObj={item} />
           ))}
       </ul>
