@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logoBig from '../assets/images/logo-big.png';
-import CharacterCard from '../components/CharacterCard';
-import LoadMoreBtn from '../components/LoadMoreBtn';
-import { SPECIES, GENDER, STATUS } from '../data/filtersData';
-import Select from '../components/Select';
+import CharacterCard from '../components/CharacterCard.jsx';
+import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
+import { SPECIES, GENDER, STATUS } from '../data/filtersData.js';
+import Select from '../components/Select.jsx';
 import { useOutletContext } from 'react-router';
-import Input from '../components/Input';
-import AdvFiltBtn from '../components/AdvFiltBtn';
+import Input from '../components/Input.jsx';
+import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
 import { API_URL } from '../data/api.js';
-import { handleLoadMore } from '../functions/functions.js';
+import { handleLoadMore } from '../utils/index.js';
 
 export default function Characters() {
   const [search, setSearch] = useState('');

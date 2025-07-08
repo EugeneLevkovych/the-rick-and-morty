@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { NavLink, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
-import { getCharacterDetails } from '../data/characterDetailsData';
+import { getCharacterDetails } from '../data/characterDetailsData.js';
 import { API_URL } from '../data/api.js';
 
 export default function CharacterDetails() {

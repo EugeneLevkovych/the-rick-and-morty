@@ -1,10 +1,10 @@
 import axios from 'axios';
 import episodesImg from '../assets/images/episodes.png';
 import { useEffect, useState } from 'react';
-import Input from '../components/Input';
-import LoadMoreBtn from '../components/LoadMoreBtn';
+import Input from '../components/Input.jsx';
+import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import { API_URL } from '../data/api.js';
-import { handleLoadMore } from '../functions/functions.js';
+import { handleLoadMore } from '../utils/index.js';
 import EpisodeCard from '../components/EpisodeCard.jsx';
 
 export default function Episodes() {

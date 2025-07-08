@@ -1,15 +1,15 @@
 import locationsImg from '../assets/images/locations.png';
-import AdvFiltBtn from '../components/AdvFiltBtn';
-import Input from '../components/Input';
-import LoadMoreBtn from '../components/LoadMoreBtn';
-import Select from '../components/Select';
-import { TYPE, DIMENSION } from '../data/filtersData';
+import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
+import Input from '../components/Input.jsx';
+import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
+import Select from '../components/Select.jsx';
+import { TYPE, DIMENSION } from '../data/filtersData.js';
 import { useOutletContext } from 'react-router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import LocationsCard from '../components/LocationsCard';
+import LocationsCard from '../components/LocationsCard.jsx';
 import { API_URL } from '../data/api.js';
-import { handleLoadMore } from '../functions/functions.js';
+import { handleLoadMore } from '../utils/index.js';
 
 export default function Locations() {
   const [searchLocation, setSearchLocation] = useState('');
