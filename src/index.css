@@ -29,7 +29,7 @@ body {
   font-display: swap;
 }
 
-@utility cont-p-m {
+@utility container-padding-margin {
   margin: 0 auto;
   padding-left: 24px;
   padding-right: 24px;

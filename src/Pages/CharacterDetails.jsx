@@ -43,7 +43,7 @@ export default function CharacterDetails() {
   }
 
   return (
-    <div className="container pt-6 pb-20.5 md:pt-10.5 md:pb-9 cont-p-m">
+    <div className="container pt-6 pb-20.5 md:pt-10.5 md:pb-9 container-padding-margin">
       <NavLink to={'/'}>
         <div className="flex items-center gap-2 font-bold text-lg text-black uppercase cursor-pointer mb-4">
           <svg className="size-6">
@@ -59,7 +59,7 @@ export default function CharacterDetails() {
       <p className="text-[2rem] text-center text-gray7 pb-4">
         {characterObj.name}
       </p>
-      <div className="flex flex-col md:flex-row gap-13 md:gap-5">
+      <div className="flex flex-col md:flex-row justify-center gap-13 md:gap-5">
         <div className="max-w-103 w-full">
           <p className="font-medium text-xl leading-tight tracking-[.01em] text-gray5 mb-4">
             Informations

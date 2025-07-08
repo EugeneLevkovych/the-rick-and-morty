@@ -53,7 +53,7 @@ export default function Locations() {
   }, [dimension, type]);
 
   return (
-    <div className="container pt-4 pb-6 cont-p-m">
+    <div className="container pt-4 pb-6 container-padding-margin">
       <p>Locations Page</p>
       <img
         className="w-54.5 md:w-81.5 mx-auto mb-6"

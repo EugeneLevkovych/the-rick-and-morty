@@ -12,8 +12,8 @@ import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../functions/functions.js';
 
 export default function Characters() {
-  const [charactersData, setCharactersData] = useState(null);
   const [search, setSearch] = useState('');
+  const [charactersData, setCharactersData] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [error, setError] = useState(null);
   const {
@@ -63,7 +63,7 @@ export default function Characters() {
   }, [species, gender, status]);
 
   return (
-    <div className="container pt-8 md:pt-6.5 pb-4 md:pb-11 cont-p-m">
+    <div className="container pt-8 md:pt-6.5 pb-4 md:pb-11 container-padding-margin">
       <img className="mx-auto mb-8 md:mb-4" src={logoBig} alt="Rick & Morty" />
       <div className="md:flex gap-5 justify-center mb-4 md:mb-12">
         <Input
