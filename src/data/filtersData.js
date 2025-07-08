@@ -1,6 +1,6 @@
-export const SPECIES = ['human', 'animal', 'robot', 'alien'];
-export const GENDER = ['male', 'female', 'genderless', 'unknoun'];
-export const STATUS = ['alive', 'dead', 'unknoun'];
+export const SPECIES = ['Human', 'Animal', 'Robot', 'Alien'];
+export const GENDER = ['Male', 'Female', 'Genderless', 'Unknoun'];
+export const STATUS = ['Alive', 'Dead', 'Unknoun'];
 export const DIMENSION = [
   'Dimension C-137',
   'Dimension 5-126',
@@ -9,7 +9,7 @@ export const DIMENSION = [
   'Post-Apocalyptic Dimension',
   'Cronenberg Dimension',
   'Fantasy Dimension',
-  'unknoun',
+  'Unknoun',
 ];
 export const TYPE = [
   'Planet',
