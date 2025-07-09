@@ -11,7 +11,7 @@ import LocationsCard from '../components/LocationsCard.jsx';
 import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
 
-export default function Locations() {
+export default function LocationsPage() {
   const [searchLocation, setSearchLocation] = useState('');
   const [locationData, setLocationData] = useState('');
   const [pageNumber, setPageNumber] = useState(1);

@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import Layout from './components/Layout';
-import Characters from './Pages/Characters';
-import Episodes from './Pages/Episodes';
-import Locations from './Pages/Locations';
-import CharacterDetails from './Pages/CharacterDetails';
-import LocationDetails from './Pages/LocationDetails';
-import EpisodeDetails from './Pages/EpisodeDetails';
 import ErrorPage from './Pages/ErrorPage';
+import CharacterDetailsPage from './pages/CharacterDetailsPage';
+import CharactersPage from './pages/CharactersPage';
+import EpisodeDetailsPage from './pages/EpisodeDetailsPage';
+import EpisodesPage from './pages/EpisodesPage';
+import LocationDetailsPage from './pages/LocationDetailsPage';
+import LocationsPage from './pages/LocationsPage';
 
 const router = createBrowserRouter([
   {
@@ -14,12 +14,12 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Characters /> },
-      { path: 'locations', element: <Locations /> },
-      { path: 'episodes', element: <Episodes /> },
-      { path: 'character-details', element: <CharacterDetails /> },
-      { path: 'location-details', element: <LocationDetails /> },
-      { path: 'episode-details', element: <EpisodeDetails /> },
+      { index: true, element: <CharactersPage /> },
+      { path: 'locations', element: <LocationsPage /> },
+      { path: 'episodes', element: <EpisodesPage /> },
+      { path: 'character-details', element: <CharacterDetailsPage /> },
+      { path: 'location-details', element: <LocationDetailsPage /> },
+      { path: 'episode-details', element: <EpisodeDetailsPage /> },
     ],
   },
 ]);

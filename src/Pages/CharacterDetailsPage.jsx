@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { getCharacterDetails } from '../data/characterDetailsData.js';
 import { API_URL } from '../data/api.js';
 
-export default function CharacterDetails() {
+export default function CharacterDetailsPage() {
   const location = useLocation();
   const characterObj = location.state?.characterObj;
   const [episodes, setEpisodes] = useState([]);

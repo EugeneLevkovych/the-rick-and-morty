@@ -11,7 +11,7 @@ import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
 import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
 
-export default function Characters() {
+export default function CharactersPage() {
   const [search, setSearch] = useState('');
   const [charactersData, setCharactersData] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);

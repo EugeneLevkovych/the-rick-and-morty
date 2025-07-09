@@ -7,7 +7,7 @@ import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
 import EpisodeCard from '../components/EpisodeCard.jsx';
 
-export default function Episodes() {
+export default function EpisodesPage() {
   const [searchEpisodes, setSearchEpisodes] = useState('');
   const [episodesData, setEpisodesData] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
