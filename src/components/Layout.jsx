@@ -7,12 +7,6 @@ import { useState } from 'react';
 export default function Layout() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [species, setSpecies] = useState('');
-  const [gender, setGender] = useState('');
-  const [status, setStatus] = useState('');
-  const [type, setType] = useState('');
-  const [dimension, setDimension] = useState('');
-
   const toggleMenu = () => {
     setIsOpen(open => !open);
   };
@@ -21,20 +15,7 @@ export default function Layout() {
       {isOpen && <MobileMenu onToggleMenu={toggleMenu} />}
       <Header onToggleMenu={toggleMenu} />
       <main>
-        <Outlet
-          context={{
-            species,
-            setSpecies,
-            gender,
-            setGender,
-            status,
-            setStatus,
-            type,
-            setType,
-            dimension,
-            setDimension,
-          }}
-        />
+        <Outlet />
       </main>
       <Footer />
     </div>

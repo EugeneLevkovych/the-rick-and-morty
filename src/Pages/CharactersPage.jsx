@@ -5,7 +5,6 @@ import CharacterCard from '../components/CharacterCard.jsx';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import { SPECIES, GENDER, STATUS } from '../data/filtersData.js';
 import Select from '../components/Select.jsx';
-import { useOutletContext } from 'react-router';
 import Input from '../components/Input.jsx';
 import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
 import { API_URL } from '../data/api.js';
@@ -18,8 +17,9 @@ export default function CharactersPage() {
   const [pageNumber, setPageNumber] = useState(1);
   const [error, setError] = useState(null);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  const { species, setSpecies, gender, setGender, status, setStatus } =
-    useOutletContext();
+  const [species, setSpecies] = useState('');
+  const [gender, setGender] = useState('');
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     async function getData() {

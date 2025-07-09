@@ -17,9 +17,8 @@ export default function LocationsPage() {
   const [locationData, setLocationData] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [isOverlay2Open, setIsOverlay2Open] = useState(false);
-
-  const { onClickAdvanced2Btn, type, setType, dimension, setDimension } =
-    useOutletContext();
+  const [type, setType] = useState('');
+  const [dimension, setDimension] = useState('');
 
   useEffect(() => {
     async function getData() {
