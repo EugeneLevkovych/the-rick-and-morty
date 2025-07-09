@@ -9,7 +9,6 @@ import { SPECIES, GENDER, STATUS, TYPE, DIMENSION } from '../data/filtersData';
 
 export default function Layout() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [isOverlay2Open, setIsOverlay2Open] = useState(false);
   const [species, setSpecies] = useState('');
   const [gender, setGender] = useState('');
@@ -27,7 +26,6 @@ export default function Layout() {
       <main>
         <Outlet
           context={{
-            onClickAdvancedBtn: () => setIsOverlayOpen(true),
             onClickAdvanced2Btn: () => setIsOverlay2Open(true),
             species,
             setSpecies,

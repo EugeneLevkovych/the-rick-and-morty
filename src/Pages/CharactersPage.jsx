@@ -18,15 +18,8 @@ export default function CharactersPage() {
   const [pageNumber, setPageNumber] = useState(1);
   const [error, setError] = useState(null);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  const {
-    onClickAdvancedBtn,
-    species,
-    setSpecies,
-    gender,
-    setGender,
-    status,
-    setStatus,
-  } = useOutletContext();
+  const { species, setSpecies, gender, setGender, status, setStatus } =
+    useOutletContext();
 
   useEffect(() => {
     async function getData() {
