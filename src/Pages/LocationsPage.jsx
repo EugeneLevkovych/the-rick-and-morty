@@ -10,11 +10,13 @@ import axios from 'axios';
 import LocationsCard from '../components/LocationsCard.jsx';
 import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
+import FiltersOverlay from '../components/FiltersOverlay.jsx';
 
 export default function LocationsPage() {
   const [searchLocation, setSearchLocation] = useState('');
   const [locationData, setLocationData] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
+  const [isOverlay2Open, setIsOverlay2Open] = useState(false);
 
   const { onClickAdvanced2Btn, type, setType, dimension, setDimension } =
     useOutletContext();
@@ -91,13 +93,48 @@ export default function LocationsPage() {
           ))}
         </Select>
       </div>
-      <AdvFiltBtn onClick={onClickAdvanced2Btn} />
+      <AdvFiltBtn onClick={() => setIsOverlay2Open(true)} />
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {locationData.results?.map(item => (
           <LocationsCard key={item.id} locationObj={item} />
         ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
+      {isOverlay2Open && (
+        <FiltersOverlay
+          isOpen={isOverlay2Open}
+          onClickClose={() => setIsOverlay2Open(false)}
+          type={type}
+          setType={setType}
+          dimension={dimension}
+          setDimension={setDimension}
+        >
+          <Select
+            onChange={e => setType(e.target.value)}
+            value={type}
+            name="type"
+            className="w-full"
+          >
+            {TYPE.map(i => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </Select>
+          <Select
+            onChange={e => setDimension(e.target.value)}
+            value={dimension}
+            name="dimension"
+            className="w-full"
+          >
+            {DIMENSION.map(i => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </Select>
+        </FiltersOverlay>
+      )}
     </div>
   );
 }
