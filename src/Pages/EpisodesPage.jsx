@@ -5,7 +5,7 @@ import Input from '../components/Input.jsx';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
-import EpisodeCard from '../components/EpisodeCard.jsx';
+import Card from '../components/Card.jsx';
 
 export default function EpisodesPage() {
   const [searchEpisodes, setSearchEpisodes] = useState('');
@@ -56,7 +56,7 @@ export default function EpisodesPage() {
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {episodesData &&
           episodesData.results.map(item => (
-            <EpisodeCard key={item.name} episodeObj={item} />
+            <Card key={item.id} item={item} type="episode" />
           ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />

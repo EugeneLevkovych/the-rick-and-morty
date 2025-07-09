@@ -4,13 +4,12 @@ import Input from '../components/Input.jsx';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import Select from '../components/Select.jsx';
 import { TYPE, DIMENSION } from '../data/filtersData.js';
-import { useOutletContext } from 'react-router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import LocationsCard from '../components/LocationsCard.jsx';
 import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
 import FiltersOverlay from '../components/FiltersOverlay.jsx';
+import Card from '../components/Card.jsx';
 
 export default function LocationsPage() {
   const [searchLocation, setSearchLocation] = useState('');
@@ -95,7 +94,7 @@ export default function LocationsPage() {
       <AdvFiltBtn onClick={() => setIsOverlay2Open(true)} />
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {locationData.results?.map(item => (
-          <LocationsCard key={item.id} locationObj={item} />
+          <Card key={item.id} item={item} type="location" />
         ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />

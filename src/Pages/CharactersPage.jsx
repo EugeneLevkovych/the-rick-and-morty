@@ -10,6 +10,7 @@ import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
 import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
 import FiltersOverlay from '../components/FiltersOverlay.jsx';
+import Card from '../components/Card.jsx';
 
 export default function CharactersPage() {
   const [search, setSearch] = useState('');
@@ -111,7 +112,8 @@ export default function CharactersPage() {
         <ul className="flex flex-wrap justify-center gap-5 mb-12">
           {charactersData &&
             charactersData.results.map(item => (
-              <CharacterCard key={item.id} characterObj={item} />
+              <Card key={item.id} item={item} type="character" />
+              // <CharacterCard key={item.id} characterObj={item} />
             ))}
         </ul>
       )}
