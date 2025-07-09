@@ -43,55 +43,7 @@ export default function Layout() {
         />
       </main>
       <Footer />
-      {isOverlayOpen && (
-        <FiltersOverlay
-          isOpen={isOverlayOpen}
-          onClickClose={() => setIsOverlayOpen(false)}
-          species={species}
-          setSpecies={setSpecies}
-          gender={gender}
-          setGender={setGender}
-          status={status}
-          setStatus={setStatus}
-        >
-          <Select
-            onChange={e => setSpecies(e.target.value)}
-            value={species}
-            name="Species"
-            className="w-full"
-          >
-            {SPECIES.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-          <Select
-            onChange={e => setGender(e.target.value)}
-            value={gender}
-            name="Gender"
-            className="w-full"
-          >
-            {GENDER.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-          <Select
-            onChange={e => setStatus(e.target.value)}
-            value={status}
-            name="Status"
-            className="w-full"
-          >
-            {STATUS.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-        </FiltersOverlay>
-      )}
+
       {isOverlay2Open && (
         <FiltersOverlay
           isOpen={isOverlay2Open}
