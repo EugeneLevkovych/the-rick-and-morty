@@ -3,7 +3,7 @@ import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
 import Input from '../components/Input.jsx';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import Select from '../components/Select.jsx';
-import { TYPE, DIMENSION } from '../data/filtersData.js';
+import { getSelectFilters2 } from '../data/filtersData.js';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../data/api.js';
@@ -18,6 +18,13 @@ export default function LocationsPage() {
   const [isOverlay2Open, setIsOverlay2Open] = useState(false);
   const [type, setType] = useState('');
   const [dimension, setDimension] = useState('');
+
+  const selectFilters = getSelectFilters2({
+    type,
+    setType,
+    dimension,
+    setDimension,
+  });
 
   useEffect(() => {
     async function getData() {
@@ -66,30 +73,21 @@ export default function LocationsPage() {
           setSearch={setSearchLocation}
           className="w-full md:w-81.5"
         />
-        <Select
-          onChange={e => setType(e.target.value)}
-          value={type}
-          name="type"
-          className="hidden md:block w-60 xl:w-73 2xl:w-83"
-        >
-          {TYPE.map(i => (
-            <option key={i} value={i}>
-              {i}
-            </option>
-          ))}
-        </Select>
-        <Select
-          onChange={e => setDimension(e.target.value)}
-          value={dimension}
-          name="dimension"
-          className="hidden md:block w-60 xl:w-73 2xl:w-83"
-        >
-          {DIMENSION.map(i => (
-            <option key={i} value={i}>
-              {i}
-            </option>
-          ))}
-        </Select>
+        {selectFilters.map(({ name, value, onChange, options }) => (
+          <Select
+            key={name}
+            onChange={e => onChange(e.target.value)}
+            value={value}
+            name={name}
+            className="hidden md:block w-60 xl:w-73 2xl:w-83"
+          >
+            {options.map(option => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </Select>
+        ))}
       </div>
       <AdvFiltBtn onClick={() => setIsOverlay2Open(true)} />
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
@@ -107,30 +105,21 @@ export default function LocationsPage() {
           dimension={dimension}
           setDimension={setDimension}
         >
-          <Select
-            onChange={e => setType(e.target.value)}
-            value={type}
-            name="type"
-            className="w-full"
-          >
-            {TYPE.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-          <Select
-            onChange={e => setDimension(e.target.value)}
-            value={dimension}
-            name="dimension"
-            className="w-full"
-          >
-            {DIMENSION.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
+          {selectFilters.map(({ name, value, onChange, options }) => (
+            <Select
+              key={name}
+              onChange={e => onChange(e.target.value)}
+              value={value}
+              name={name}
+              className="w-full"
+            >
+              {options.map(option => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </Select>
+          ))}
         </FiltersOverlay>
       )}
     </div>

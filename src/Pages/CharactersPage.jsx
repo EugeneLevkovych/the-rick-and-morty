@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logoBig from '../assets/images/logo-big.png';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
-import {
-  SPECIES,
-  GENDER,
-  STATUS,
-  getSelectFilters,
-} from '../data/filtersData.js';
+import { getSelectFilters } from '../data/filtersData.js';
 import Select from '../components/Select.jsx';
 import Input from '../components/Input.jsx';
 import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
