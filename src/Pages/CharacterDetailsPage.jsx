@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { NavLink, useLocation } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getCharacterDetails } from '../data/characterDetailsData.js';
 import { API_URL } from '../data/api.js';
 
 export default function CharacterDetailsPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const characterObj = location.state?.characterObj;
   const [episodes, setEpisodes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,16 +43,21 @@ export default function CharacterDetailsPage() {
     }
   }
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="container pt-21 pb-20.5 md:pt-19 md:pb-9 container-padding-margin">
-      <NavLink to={'/'}>
-        <div className="flex items-center gap-2 font-bold text-lg text-black uppercase cursor-pointer mb-4">
-          <svg className="size-6">
-            <use href="./sprite.svg#icon-arrow-back"></use>
-          </svg>
-          <p>Go back</p>
-        </div>
-      </NavLink>
+      <div
+        onClick={handleGoBack}
+        className="flex items-center gap-2 font-bold text-lg text-black uppercase cursor-pointer mb-4"
+      >
+        <svg className="size-6">
+          <use href="./sprite.svg#icon-arrow-back"></use>
+        </svg>
+        <p>Go back</p>
+      </div>
       <img
         className="size-37 md:size-75 border-5 border-gray9 rounded-full mx-auto md:-mt-11 mb-4"
         src={characterObj.image}
