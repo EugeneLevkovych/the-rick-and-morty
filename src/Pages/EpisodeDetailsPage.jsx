@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getEpisodeDetails } from '../data/episodeDetailsData.js';
 import { API_URL } from '../data/api.js';
-import CharacterCard from '../components/CharacterCard.jsx';
+import Card from '../components/Card.jsx';
 
 export default function EpisodeDetailsPage() {
   const episode = useLocation();
@@ -76,7 +76,7 @@ export default function EpisodeDetailsPage() {
         ) : (
           <ul className="flex flex-wrap justify-center gap-5">
             {charactersData.map(item => (
-              <CharacterCard key={item.id} characterObj={item} />
+              <Card key={item.id} item={item} type="characterInEpisode" />
             ))}
           </ul>
         )}

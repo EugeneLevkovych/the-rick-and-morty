@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getLocationDetails } from '../data/locationDetailData.js';
 import { API_URL } from '../data/api.js';
-import CharacterCard from '../components/CharacterCard.jsx';
+import Card from '../components/Card.jsx';
 
 export default function LocationDetailsPage() {
   const location = useLocation();
@@ -71,7 +71,7 @@ export default function LocationDetailsPage() {
         ) : (
           <ul className="flex flex-wrap justify-center gap-5">
             {residentsData.map(item => (
-              <CharacterCard key={item.id} characterObj={item} />
+              <Card key={item.id} item={item} type="characterInEpisode" />
             ))}
           </ul>
         )}

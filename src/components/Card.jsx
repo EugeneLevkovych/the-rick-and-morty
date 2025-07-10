@@ -29,6 +29,24 @@ export default function Card({ item, type }) {
       subtitle: item.air_date,
       centered: true,
     },
+    characterInLocation: {
+      route: '/character-details',
+      stateKey: 'characterObj',
+      hasImage: true,
+      height: 'h-auto md:h-61',
+      title: item.name,
+      subtitle: item.species,
+      image: item.image,
+    },
+    characterInEpisode: {
+      route: '/character-details',
+      stateKey: 'characterObj',
+      hasImage: true,
+      height: 'h-auto md:h-61',
+      title: item.name,
+      subtitle: item.species,
+      image: item.image,
+    },
   };
 
   const config = cardConfig[type];

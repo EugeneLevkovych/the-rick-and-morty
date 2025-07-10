@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logoBig from '../assets/images/logo-big.png';
-import CharacterCard from '../components/CharacterCard.jsx';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import { SPECIES, GENDER, STATUS } from '../data/filtersData.js';
 import Select from '../components/Select.jsx';
@@ -113,7 +112,6 @@ export default function CharactersPage() {
           {charactersData &&
             charactersData.results.map(item => (
               <Card key={item.id} item={item} type="character" />
-              // <CharacterCard key={item.id} characterObj={item} />
             ))}
         </ul>
       )}
