@@ -120,42 +120,21 @@ export default function CharactersPage() {
           status={status}
           setStatus={setStatus}
         >
-          <Select
-            onChange={e => setSpecies(e.target.value)}
-            value={species}
-            name="Species"
-            className="w-full"
-          >
-            {SPECIES.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-          <Select
-            onChange={e => setGender(e.target.value)}
-            value={gender}
-            name="Gender"
-            className="w-full"
-          >
-            {GENDER.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
-          <Select
-            onChange={e => setStatus(e.target.value)}
-            value={status}
-            name="Status"
-            className="w-full"
-          >
-            {STATUS.map(i => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
-          </Select>
+          {selectFilters.map(({ name, value, onChange, options }) => (
+            <Select
+              key={name}
+              onChange={e => onChange(e.target.value)}
+              value={value}
+              name={name}
+              className="w-full"
+            >
+              {options.map(option => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </Select>
+          ))}
         </FiltersOverlay>
       )}
     </div>
