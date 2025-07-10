@@ -2,7 +2,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import logoBig from '../assets/images/logo-big.png';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
-import { SPECIES, GENDER, STATUS } from '../data/filtersData.js';
+import {
+  SPECIES,
+  GENDER,
+  STATUS,
+  getSelectFilters,
+} from '../data/filtersData.js';
 import Select from '../components/Select.jsx';
 import Input from '../components/Input.jsx';
 import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
@@ -20,6 +25,15 @@ export default function CharactersPage() {
   const [species, setSpecies] = useState('');
   const [gender, setGender] = useState('');
   const [status, setStatus] = useState('');
+
+  const selectFilters = getSelectFilters({
+    species,
+    setSpecies,
+    gender,
+    setGender,
+    status,
+    setStatus,
+  });
 
   useEffect(() => {
     async function getData() {
@@ -66,42 +80,21 @@ export default function CharactersPage() {
           setSearch={setSearch}
           className="w-full md:w-60"
         />
-        <Select
-          onChange={e => setSpecies(e.target.value)}
-          value={species}
-          name="Species"
-          className="hidden md:block w-60"
-        >
-          {SPECIES.map(i => (
-            <option key={i} value={i}>
-              {i}
-            </option>
-          ))}
-        </Select>
-        <Select
-          onChange={e => setGender(e.target.value)}
-          value={gender}
-          name="Gender"
-          className="hidden md:block w-60"
-        >
-          {GENDER.map(i => (
-            <option key={i} value={i}>
-              {i}
-            </option>
-          ))}
-        </Select>
-        <Select
-          onChange={e => setStatus(e.target.value)}
-          value={status}
-          name="Status"
-          className="hidden md:block w-60"
-        >
-          {STATUS.map(i => (
-            <option key={i} value={i}>
-              {i}
-            </option>
-          ))}
-        </Select>
+        {selectFilters.map(({ name, value, onChange, options }) => (
+          <Select
+            key={name}
+            onChange={e => onChange(e.target.value)}
+            value={value}
+            name={name}
+            className="hidden md:block w-60"
+          >
+            {options.map(option => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </Select>
+        ))}
       </div>
       <AdvFiltBtn onClick={() => setIsOverlayOpen(true)} />
 

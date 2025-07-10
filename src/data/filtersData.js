@@ -1,6 +1,37 @@
 export const SPECIES = ['Human', 'Animal', 'Robot', 'Alien'];
 export const GENDER = ['Male', 'Female', 'Genderless', 'Unknoun'];
 export const STATUS = ['Alive', 'Dead', 'Unknoun'];
+
+export function getSelectFilters({
+  species,
+  setSpecies,
+  gender,
+  setGender,
+  status,
+  setStatus,
+}) {
+  return [
+    {
+      name: 'Species',
+      value: species,
+      onChange: setSpecies,
+      options: SPECIES,
+    },
+    {
+      name: 'Gender',
+      value: gender,
+      onChange: setGender,
+      options: GENDER,
+    },
+    {
+      name: 'Status',
+      value: status,
+      onChange: setStatus,
+      options: STATUS,
+    },
+  ];
+}
+
 export const DIMENSION = [
   'Dimension C-137',
   'Dimension 5-126',

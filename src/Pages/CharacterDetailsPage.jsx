@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NavLink, useLocation, useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getCharacterDetails } from '../data/characterDetailsData.js';
 import { API_URL } from '../data/api.js';
