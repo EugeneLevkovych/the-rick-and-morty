@@ -18,7 +18,7 @@ export default function Select({
         </option>
         {children}
       </select>
-      <svg className="absolute top-4 right-4 size-6 cursor-pointer">
+      <svg className="absolute top-4 right-4 size-6 pointer-events-none">
         <use href="./sprite.svg#icon-triangle-down"></use>
       </svg>
     </div>
