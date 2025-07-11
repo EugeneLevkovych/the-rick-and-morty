@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import Layout from './components/Layout';
-import ErrorPage from './pages/ErrorPage';
+// import ErrorPage from './pages/ErrorPage';
 import CharacterDetailsPage from './pages/CharacterDetailsPage';
 import CharactersPage from './pages/CharactersPage';
 import EpisodeDetailsPage from './pages/EpisodeDetailsPage';
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    errorElement: <ErrorPage />,
+    // errorElement: <ErrorPage />,
     children: [
       { index: true, element: <CharactersPage /> },
       { path: 'locations', element: <LocationsPage /> },
