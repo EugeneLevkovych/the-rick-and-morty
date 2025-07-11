@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import Layout from './components/Layout';
 // import ErrorPage from './pages/ErrorPage';
-import CharacterDetailsPage from './ages/CharacterDetailsPage';
-import CharactersPage from './ages/CharactersPage';
-import EpisodeDetailsPage from './ages/EpisodeDetailsPage';
-import EpisodesPage from './ages/EpisodesPage';
-import LocationDetailsPage from './ages/LocationDetailsPage';
-import LocationsPage from './ages/LocationsPage';
+import CharacterDetailsPage from './pages/CharacterDetailsPage';
+import CharactersPage from './pages/CharactersPage';
+import EpisodeDetailsPage from './pages/EpisodeDetailsPage';
+import EpisodesPage from './pages/EpisodesPage';
+import LocationDetailsPage from './pages/LocationDetailsPage';
+import LocationsPage from './pages/LocationsPage';
 
 const router = createBrowserRouter([
   {
