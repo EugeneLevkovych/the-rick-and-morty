@@ -39,7 +39,7 @@ export default function EpisodesPage() {
   }, [searchEpisodes, pageNumber]);
 
   return (
-    <div className="container pt-19 pb-6 container-padding-margin">
+    <div className="container pt-19 pb-6 container-centered">
       <p>Episodes Page</p>
       <img
         className="w-43.5 md:w-67.5 mx-auto mb-6"

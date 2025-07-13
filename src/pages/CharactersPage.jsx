@@ -67,7 +67,7 @@ export default function CharactersPage() {
   }, [species, gender, status]);
 
   return (
-    <div className="container pt-23 md:pt-21.5 pb-4 md:pb-11 container-padding-margin">
+    <div className="container pt-23 md:pt-21.5 pb-4 md:pb-11 container-centered">
       <img className="mx-auto mb-8 md:mb-4" src={logoBig} alt="Rick & Morty" />
       <div className="md:flex gap-5 justify-center mb-4 md:mb-12">
         <Input

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 export default function MobileMenu({ onToggleMenu }) {
   return (
     <div className="fixed w-full min-h-screen z-50 md:hidden bg-white">
-      <div className="container flex justify-between items-center border-b-0 shadow-mob-menu cont-p-m">
+      <div className="container flex justify-between items-center border-b-0 shadow-mob-menu container-centered">
         <img src={logoBlack} alt="logo" />
         <svg onClick={onToggleMenu} className="size-6 fill-gray10">
           <use href="./sprite.svg#icon-close"></use>

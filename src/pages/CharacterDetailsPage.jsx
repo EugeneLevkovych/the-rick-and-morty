@@ -48,7 +48,7 @@ export default function CharacterDetailsPage() {
   };
 
   return (
-    <div className="container pt-21 pb-20.5 md:pt-19 md:pb-9 container-padding-margin">
+    <div className="container pt-21 pb-20.5 md:pt-19 md:pb-9 container-centered">
       <div
         onClick={handleGoBack}
         className="flex items-center gap-2 font-bold text-lg text-black uppercase cursor-pointer mb-4"

@@ -60,7 +60,7 @@ export default function LocationsPage() {
   }, [dimension, type]);
 
   return (
-    <div className="container pt-19 pb-6 container-padding-margin">
+    <div className="container pt-19 pb-6 container-centered">
       <p>Locations Page</p>
       <img
         className="w-54.5 md:w-81.5 mx-auto mb-6"

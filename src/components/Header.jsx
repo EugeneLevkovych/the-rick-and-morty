@@ -4,7 +4,7 @@ import logoBlack from '../assets/images/logo-black.png';
 export default function Header({ onToggleMenu }) {
   return (
     <div className="fixed z-50 w-full border-b-0 shadow-md py-[6px] bg-white">
-      <div className="container flex justify-between items-center container-padding-margin">
+      <div className="container flex justify-between items-center container-centered">
         <img src={logoBlack} alt="logo" />
         <div className="hidden md:flex gap-6">
           <NavLink to={'/'}>Characters</NavLink>

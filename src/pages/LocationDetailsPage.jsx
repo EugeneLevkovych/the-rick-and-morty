@@ -41,7 +41,7 @@ export default function LocationDetailsPage() {
 
   return (
     <>
-      <div className="container pt-21 pb-20.5 md:pt-22.5 md:pb-9 container-padding-margin">
+      <div className="container pt-21 pb-20.5 md:pt-22.5 md:pb-9 container-centered">
         <div className="flex flex-col md:flex-row md:gap-40 lg:gap-70 xl:gap-100 md:items-center md:mb-6">
           <NavLink to={'/locations'}>
             <div className="flex items-center gap-2 font-bold text-lg text-black uppercase cursor-pointer">
