@@ -24,7 +24,7 @@ export const TYPE = [
   'Cluster',
 ];
 
-export function getSelectFilters({
+export function getCharactersFilters({
   species,
   setSpecies,
   gender,
@@ -54,7 +54,12 @@ export function getSelectFilters({
   ];
 }
 
-export function getSelectFilters2({ type, setType, dimension, setDimension }) {
+export function getLocationsFilters({
+  type,
+  setType,
+  dimension,
+  setDimension,
+}) {
   return [
     {
       name: 'Type',

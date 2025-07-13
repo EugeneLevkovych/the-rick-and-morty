@@ -3,7 +3,7 @@ import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
 import Input from '../components/Input.jsx';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import Select from '../components/Select.jsx';
-import { getSelectFilters2 } from '../data/filtersData.js';
+import { getLocationsFilters } from '../data/filtersData.js';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../data/api.js';
@@ -19,7 +19,7 @@ export default function LocationsPage() {
   const [type, setType] = useState('');
   const [dimension, setDimension] = useState('');
 
-  const selectFilters = getSelectFilters2({
+  const selectFilters = getLocationsFilters({
     type,
     setType,
     dimension,
