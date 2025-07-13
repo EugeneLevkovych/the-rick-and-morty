@@ -15,7 +15,7 @@ export default function LocationsPage() {
   const [searchLocation, setSearchLocation] = useState('');
   const [locationData, setLocationData] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-  const [isOverlay2Open, setIsOverlay2Open] = useState(false);
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [type, setType] = useState('');
   const [dimension, setDimension] = useState('');
 
@@ -89,17 +89,17 @@ export default function LocationsPage() {
           </Select>
         ))}
       </div>
-      <AdvFiltBtn onClick={() => setIsOverlay2Open(true)} />
+      <AdvFiltBtn onClick={() => setIsOverlayOpen(true)} />
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {locationData.results?.map(item => (
           <Card key={item.id} item={item} type="location" />
         ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
-      {isOverlay2Open && (
+      {isOverlayOpen && (
         <FiltersOverlay
-          isOpen={isOverlay2Open}
-          onClickClose={() => setIsOverlay2Open(false)}
+          isOpen={isOverlayOpen}
+          onClickClose={() => setIsOverlayOpen(false)}
           type={type}
           setType={setType}
           dimension={dimension}
