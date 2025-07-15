@@ -104,6 +104,8 @@ export default function CharactersPage() {
                 item={item}
                 type="character"
                 route="/character-details"
+                title={item.name}
+                subtitle={item.species}
               />
             ))}
         </ul>

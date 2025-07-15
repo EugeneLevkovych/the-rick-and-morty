@@ -79,6 +79,8 @@ export default function EpisodeDetailsPage() {
                 item={item}
                 type="characterInEpisode"
                 route="/character-details"
+                title={item.name}
+                subtitle={item.species}
               />
             ))}
           </ul>

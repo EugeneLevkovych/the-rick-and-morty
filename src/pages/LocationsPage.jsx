@@ -96,6 +96,8 @@ export default function LocationsPage() {
             item={item}
             type="location"
             route="/location-details"
+            title={item.dimension}
+            subtitle={item.type}
           />
         ))}
       </ul>

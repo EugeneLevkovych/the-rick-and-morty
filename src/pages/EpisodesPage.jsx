@@ -60,6 +60,8 @@ export default function EpisodesPage() {
               item={item}
               type="episode"
               route="/episode-details"
+              title={item.name}
+              subtitle={item.air_date}
             />
           ))}
       </ul>
