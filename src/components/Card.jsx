@@ -60,7 +60,7 @@ export default function Card({ item, type, route, title, subtitle }) {
             {title}
           </p>
           <p className="text-sm leading-6 tracking-[.02em] text-gray3">
-            {config.subtitle}
+            {subtitle}
           </p>
         </div>
       </NavLink>
