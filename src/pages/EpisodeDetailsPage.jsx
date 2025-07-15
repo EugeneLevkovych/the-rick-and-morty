@@ -81,6 +81,7 @@ export default function EpisodeDetailsPage() {
                 route="/character-details"
                 title={item.name}
                 subtitle={item.species}
+                image={item.image}
               />
             ))}
           </ul>

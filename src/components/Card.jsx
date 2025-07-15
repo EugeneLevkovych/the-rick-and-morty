@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router';
 
-export default function Card({ item, type, route, title, subtitle }) {
+export default function Card({ item, type, route, title, subtitle, image }) {
   const cardConfig = {
     character: {
       stateKey: 'characterObj',
@@ -48,12 +48,8 @@ export default function Card({ item, type, route, title, subtitle }) {
       className={`${config.height} w-full md:w-60 rounded-sm shadow-card overflow-hidden cursor-pointer ${config.centered ? 'flex justify-center items-center' : ''}`}
     >
       <NavLink to={route} state={linkState}>
-        {config.hasImage && (
-          <img
-            className="h-auto md:h-42 w-full"
-            src={config.image}
-            alt={title}
-          />
+        {image && (
+          <img className="h-auto md:h-42 w-full" src={image} alt={title} />
         )}
         <div className="px-4 py-3">
           <p className="font-medium text-xl leading-6 tracking-[.01em] text-gray2">
