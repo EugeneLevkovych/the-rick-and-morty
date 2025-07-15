@@ -4,33 +4,25 @@ export default function Card({ item, type, route, title, subtitle, image }) {
   const cardConfig = {
     character: {
       stateKey: 'characterObj',
-      hasImage: true,
       height: 'h-auto md:h-61',
-      image: item.image,
     },
     location: {
       stateKey: 'locationObj',
-      hasImage: false,
       height: 'h-78 md:h-32',
       centered: true,
     },
     episode: {
       stateKey: 'episodeObj',
-      hasImage: false,
       height: 'h-78 md:h-32',
       centered: true,
     },
     characterInLocation: {
       stateKey: 'characterObj',
-      hasImage: true,
       height: 'h-auto md:h-61',
-      image: item.image,
     },
     characterInEpisode: {
       stateKey: 'characterObj',
-      hasImage: true,
       height: 'h-auto md:h-61',
-      image: item.image,
     },
   };
 
