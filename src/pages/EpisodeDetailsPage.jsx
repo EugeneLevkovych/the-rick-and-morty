@@ -74,7 +74,12 @@ export default function EpisodeDetailsPage() {
         ) : (
           <ul className="flex flex-wrap justify-center gap-5">
             {charactersData.map(item => (
-              <Card key={item.id} item={item} type="characterInEpisode" />
+              <Card
+                key={item.id}
+                item={item}
+                type="characterInEpisode"
+                route="/character-details"
+              />
             ))}
           </ul>
         )}

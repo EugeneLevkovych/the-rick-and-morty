@@ -71,7 +71,12 @@ export default function LocationDetailsPage() {
         ) : (
           <ul className="flex flex-wrap justify-center gap-5">
             {residentsData.map(item => (
-              <Card key={item.id} item={item} type="characterInEpisode" />
+              <Card
+                key={item.id}
+                item={item}
+                type="characterInEpisode"
+                route="/character-details"
+              />
             ))}
           </ul>
         )}

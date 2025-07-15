@@ -99,7 +99,12 @@ export default function CharactersPage() {
         <ul className="flex flex-wrap justify-center gap-5 mb-12">
           {charactersData &&
             charactersData.results.map(item => (
-              <Card key={item.id} item={item} type="character" />
+              <Card
+                key={item.id}
+                item={item}
+                type="character"
+                route="/character-details"
+              />
             ))}
         </ul>
       )}

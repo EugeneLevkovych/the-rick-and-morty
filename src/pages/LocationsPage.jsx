@@ -91,7 +91,12 @@ export default function LocationsPage() {
       <AdvFiltBtn onClick={() => setIsOverlayOpen(true)} />
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {locationData.results?.map(item => (
-          <Card key={item.id} item={item} type="location" />
+          <Card
+            key={item.id}
+            item={item}
+            type="location"
+            route="/location-details"
+          />
         ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />

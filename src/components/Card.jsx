@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router';
 
-export default function Card({ item, type }) {
+export default function Card({ item, type, route }) {
   const cardConfig = {
     character: {
-      route: '/character-details',
       stateKey: 'characterObj',
       hasImage: true,
       height: 'h-auto md:h-61',
@@ -12,7 +11,6 @@ export default function Card({ item, type }) {
       image: item.image,
     },
     location: {
-      route: '/location-details',
       stateKey: 'locationObj',
       hasImage: false,
       height: 'h-78 md:h-32',
@@ -21,7 +19,6 @@ export default function Card({ item, type }) {
       centered: true,
     },
     episode: {
-      route: '/episode-details',
       stateKey: 'episodeObj',
       hasImage: false,
       height: 'h-78 md:h-32',
@@ -30,7 +27,6 @@ export default function Card({ item, type }) {
       centered: true,
     },
     characterInLocation: {
-      route: '/character-details',
       stateKey: 'characterObj',
       hasImage: true,
       height: 'h-auto md:h-61',
@@ -39,7 +35,6 @@ export default function Card({ item, type }) {
       image: item.image,
     },
     characterInEpisode: {
-      route: '/character-details',
       stateKey: 'characterObj',
       hasImage: true,
       height: 'h-auto md:h-61',
@@ -62,7 +57,7 @@ export default function Card({ item, type }) {
     <li
       className={`${config.height} w-full md:w-60 rounded-sm shadow-card overflow-hidden cursor-pointer ${config.centered ? 'flex justify-center items-center' : ''}`}
     >
-      <NavLink to={config.route} state={linkState}>
+      <NavLink to={route} state={linkState}>
         {config.hasImage && (
           <img
             className="h-auto md:h-42 w-full"

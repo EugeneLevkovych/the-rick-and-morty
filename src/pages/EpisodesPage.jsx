@@ -55,7 +55,12 @@ export default function EpisodesPage() {
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {episodesData &&
           episodesData.results.map(item => (
-            <Card key={item.id} item={item} type="episode" />
+            <Card
+              key={item.id}
+              item={item}
+              type="episode"
+              route="/episode-details"
+            />
           ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
