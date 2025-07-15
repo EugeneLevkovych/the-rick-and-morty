@@ -94,7 +94,6 @@ export default function LocationsPage() {
           <Card
             key={item.id}
             item={item}
-            // type="location"
             stateKey="locationObj"
             route="/location-details"
             title={item.dimension}

@@ -74,7 +74,6 @@ export default function LocationDetailsPage() {
               <Card
                 key={item.id}
                 item={item}
-                // type="characterInEpisode"
                 stateKey="characterObj"
                 route="/character-details"
                 title={item.name}

@@ -58,7 +58,6 @@ export default function EpisodesPage() {
             <Card
               key={item.id}
               item={item}
-              // type="episode"
               stateKey="episodeObj"
               route="/episode-details"
               title={item.name}
