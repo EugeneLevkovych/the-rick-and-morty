@@ -102,7 +102,8 @@ export default function CharactersPage() {
               <Card
                 key={item.id}
                 item={item}
-                type="character"
+                // type="character"
+                stateKey="characterObj"
                 route="/character-details"
                 title={item.name}
                 subtitle={item.species}

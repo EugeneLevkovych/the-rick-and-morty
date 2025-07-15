@@ -2,7 +2,7 @@ import { NavLink } from 'react-router';
 
 export default function Card({
   item,
-  type,
+  stateKey = 'characterObj',
   route,
   title,
   subtitle,
@@ -10,32 +10,7 @@ export default function Card({
   height,
   centered,
 }) {
-  const cardConfig = {
-    character: {
-      stateKey: 'characterObj',
-    },
-    location: {
-      stateKey: 'locationObj',
-    },
-    episode: {
-      stateKey: 'episodeObj',
-    },
-    characterInLocation: {
-      stateKey: 'characterObj',
-    },
-    characterInEpisode: {
-      stateKey: 'characterObj',
-    },
-  };
-
-  const config = cardConfig[type];
-
-  if (!config) {
-    console.error(`Unknown card type: ${type}`);
-    return null;
-  }
-
-  const linkState = { [config.stateKey]: item };
+  const linkState = { [stateKey]: item };
 
   return (
     <li
