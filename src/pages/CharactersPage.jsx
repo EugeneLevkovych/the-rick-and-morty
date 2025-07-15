@@ -107,6 +107,7 @@ export default function CharactersPage() {
                 title={item.name}
                 subtitle={item.species}
                 image={item.image}
+                height="h-auto md:h-61"
               />
             ))}
         </ul>

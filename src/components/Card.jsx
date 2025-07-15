@@ -1,28 +1,30 @@
 import { NavLink } from 'react-router';
 
-export default function Card({ item, type, route, title, subtitle, image }) {
+export default function Card({
+  item,
+  type,
+  route,
+  title,
+  subtitle,
+  image,
+  height,
+  centered,
+}) {
   const cardConfig = {
     character: {
       stateKey: 'characterObj',
-      height: 'h-auto md:h-61',
     },
     location: {
       stateKey: 'locationObj',
-      height: 'h-78 md:h-32',
-      centered: true,
     },
     episode: {
       stateKey: 'episodeObj',
-      height: 'h-78 md:h-32',
-      centered: true,
     },
     characterInLocation: {
       stateKey: 'characterObj',
-      height: 'h-auto md:h-61',
     },
     characterInEpisode: {
       stateKey: 'characterObj',
-      height: 'h-auto md:h-61',
     },
   };
 
@@ -37,7 +39,7 @@ export default function Card({ item, type, route, title, subtitle, image }) {
 
   return (
     <li
-      className={`${config.height} w-full md:w-60 rounded-sm shadow-card overflow-hidden cursor-pointer ${config.centered ? 'flex justify-center items-center' : ''}`}
+      className={`${height} w-full md:w-60 rounded-sm shadow-card overflow-hidden cursor-pointer ${centered}`}
     >
       <NavLink to={route} state={linkState}>
         {image && (

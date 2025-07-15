@@ -98,6 +98,8 @@ export default function LocationsPage() {
             route="/location-details"
             title={item.dimension}
             subtitle={item.type}
+            height="h-78 md:h-32"
+            centered="flex justify-center items-center"
           />
         ))}
       </ul>

@@ -62,6 +62,8 @@ export default function EpisodesPage() {
               route="/episode-details"
               title={item.name}
               subtitle={item.air_date}
+              height="h-78 md:h-32"
+              centered="flex justify-center items-center"
             />
           ))}
       </ul>
