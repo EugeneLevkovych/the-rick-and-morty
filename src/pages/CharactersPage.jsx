@@ -5,7 +5,6 @@ import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import { getCharactersFilters } from '../data/filtersData.js';
 import Select from '../components/Select.jsx';
 import Input from '../components/Input.jsx';
-import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
 import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
 import FiltersOverlay from '../components/FiltersOverlay.jsx';
@@ -16,7 +15,6 @@ export default function CharactersPage() {
   const [charactersData, setCharactersData] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [error, setError] = useState(null);
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [species, setSpecies] = useState('');
   const [gender, setGender] = useState('');
   const [status, setStatus] = useState('');
@@ -87,16 +85,7 @@ export default function CharactersPage() {
         ))}
       </div>
 
-      <FiltersOverlay
-        isOpen={isOverlayOpen}
-        onClickClose={() => setIsOverlayOpen(false)}
-        species={species}
-        setSpecies={setSpecies}
-        gender={gender}
-        setGender={setGender}
-        status={status}
-        setStatus={setStatus}
-      >
+      <FiltersOverlay>
         {selectFilters.map(({ name, value, onChange, options }) => (
           <Select
             key={name}
