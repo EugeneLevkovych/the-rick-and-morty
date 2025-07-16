@@ -83,7 +83,20 @@ export default function LocationsPage() {
           />
         ))}
       </div>
-      <AdvFiltBtn onClick={() => setIsOverlayOpen(true)} />
+
+      <FiltersOverlay>
+        {selectFilters.map(({ name, value, onChange, options }) => (
+          <Select
+            key={name}
+            onChange={e => onChange(e.target.value)}
+            value={value}
+            name={name}
+            className="w-full"
+            options={options}
+          />
+        ))}
+      </FiltersOverlay>
+
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {locationData.results?.map(item => (
           <Card
@@ -99,28 +112,6 @@ export default function LocationsPage() {
         ))}
       </ul>
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
-
-      {isOverlayOpen && (
-        <FiltersOverlay
-          isOpen={isOverlayOpen}
-          onClickClose={() => setIsOverlayOpen(false)}
-          type={type}
-          setType={setType}
-          dimension={dimension}
-          setDimension={setDimension}
-        >
-          {selectFilters.map(({ name, value, onChange, options }) => (
-            <Select
-              key={name}
-              onChange={e => onChange(e.target.value)}
-              value={value}
-              name={name}
-              className="w-full"
-              options={options}
-            />
-          ))}
-        </FiltersOverlay>
-      )}
     </div>
   );
 }
