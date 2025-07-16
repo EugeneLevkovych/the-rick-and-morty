@@ -86,7 +86,28 @@ export default function CharactersPage() {
           />
         ))}
       </div>
-      <AdvFiltBtn onClick={() => setIsOverlayOpen(true)} />
+
+      <FiltersOverlay
+        isOpen={isOverlayOpen}
+        onClickClose={() => setIsOverlayOpen(false)}
+        species={species}
+        setSpecies={setSpecies}
+        gender={gender}
+        setGender={setGender}
+        status={status}
+        setStatus={setStatus}
+      >
+        {selectFilters.map(({ name, value, onChange, options }) => (
+          <Select
+            key={name}
+            onChange={e => onChange(e.target.value)}
+            value={value}
+            name={name}
+            className="w-full"
+            options={options}
+          />
+        ))}
+      </FiltersOverlay>
 
       {error ? (
         <p className="text-center text-red-500">{error}</p>
@@ -108,30 +129,6 @@ export default function CharactersPage() {
         </ul>
       )}
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
-
-      {isOverlayOpen && (
-        <FiltersOverlay
-          isOpen={isOverlayOpen}
-          onClickClose={() => setIsOverlayOpen(false)}
-          species={species}
-          setSpecies={setSpecies}
-          gender={gender}
-          setGender={setGender}
-          status={status}
-          setStatus={setStatus}
-        >
-          {selectFilters.map(({ name, value, onChange, options }) => (
-            <Select
-              key={name}
-              onChange={e => onChange(e.target.value)}
-              value={value}
-              name={name}
-              className="w-full"
-              options={options}
-            />
-          ))}
-        </FiltersOverlay>
-      )}
     </div>
   );
 }
