@@ -1,7 +1,7 @@
 export default function Select({
   onChange,
   value,
-  children,
+  options,
   name,
   className = '',
 }) {
@@ -16,7 +16,11 @@ export default function Select({
         <option value="" disabled hidden>
           {name}
         </option>
-        {children}
+        {options.map(option => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
       </select>
       <svg className="absolute top-4 right-4 size-6 pointer-events-none">
         <use href="./sprite.svg#icon-triangle-down"></use>

@@ -82,13 +82,8 @@ export default function CharactersPage() {
             value={value}
             name={name}
             className="hidden md:block w-60"
-          >
-            {options.map(option => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </Select>
+            options={options}
+          />
         ))}
       </div>
       <AdvFiltBtn onClick={() => setIsOverlayOpen(true)} />
@@ -113,6 +108,7 @@ export default function CharactersPage() {
         </ul>
       )}
       <LoadMoreBtn onClick={() => handleLoadMore(setPageNumber)} />
+
       {isOverlayOpen && (
         <FiltersOverlay
           isOpen={isOverlayOpen}
@@ -131,13 +127,8 @@ export default function CharactersPage() {
               value={value}
               name={name}
               className="w-full"
-            >
-              {options.map(option => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </Select>
+              options={options}
+            />
           ))}
         </FiltersOverlay>
       )}
