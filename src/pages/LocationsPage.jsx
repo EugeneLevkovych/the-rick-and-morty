@@ -1,5 +1,4 @@
 import locationsImg from '../assets/images/locations.png';
-import AdvFiltBtn from '../components/AdvFiltBtn.jsx';
 import Input from '../components/Input.jsx';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import Select from '../components/Select.jsx';
@@ -15,7 +14,6 @@ export default function LocationsPage() {
   const [searchLocation, setSearchLocation] = useState('');
   const [locationData, setLocationData] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [type, setType] = useState('');
   const [dimension, setDimension] = useState('');
 
