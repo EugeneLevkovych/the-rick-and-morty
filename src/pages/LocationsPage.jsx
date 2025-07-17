@@ -3,7 +3,7 @@ import Input from '../components/Input.jsx';
 import LoadMoreBtn from '../components/LoadMoreBtn.jsx';
 import Select from '../components/Select.jsx';
 import { getLocationsFilters } from '../data/filtersData.js';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../data/api.js';
 import { handleLoadMore } from '../utils/index.js';
@@ -57,6 +57,19 @@ export default function LocationsPage() {
     setPageNumber(1);
   }, [dimension, type]);
 
+  const filters = useMemo(() => {
+    return selectFilters.map(({ name, value, onChange, options }) => (
+      <Select
+        key={name}
+        onChange={e => onChange(e.target.value)}
+        value={value}
+        name={name}
+        className="w-full md:w-60 xl:w-73 2xl:w-83"
+        options={options}
+      />
+    ));
+  }, [selectFilters]);
+
   return (
     <div className="container pt-25 pb-6 container-centered">
       <img
@@ -70,30 +83,10 @@ export default function LocationsPage() {
           setSearch={setSearchLocation}
           className="w-full md:w-81.5"
         />
-        {selectFilters.map(({ name, value, onChange, options }) => (
-          <Select
-            key={name}
-            onChange={e => onChange(e.target.value)}
-            value={value}
-            name={name}
-            className="hidden md:block w-60 xl:w-73 2xl:w-83"
-            options={options}
-          />
-        ))}
+        <div className="hidden md:flex gap-5"> {filters}</div>
       </div>
 
-      <FiltersOverlay>
-        {selectFilters.map(({ name, value, onChange, options }) => (
-          <Select
-            key={name}
-            onChange={e => onChange(e.target.value)}
-            value={value}
-            name={name}
-            className="w-full"
-            options={options}
-          />
-        ))}
-      </FiltersOverlay>
+      <FiltersOverlay>{filters}</FiltersOverlay>
 
       <ul className="flex flex-wrap justify-center gap-5 mb-12">
         {locationData.results?.map(item => (
